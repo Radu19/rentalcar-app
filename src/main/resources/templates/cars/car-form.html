@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+  <title>Save Car</title>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h3>Car Directory</h3>
+    <hr>
+
+    <p class="h4 mb-4">Save Car</p>
+
+    <form th:action="@{/cars/save}" th:object="${car}" method="POST">
+
+      <!-- Add hidden form field to handle update -->
+      <input type="hidden" th:field="*{id}" />
+
+      <div class="form-group row">
+        <label for="inputBrand" class="col-sm-2 col-form-label">Brand</label>
+        <div class="col-sm-10">
+          <select th:field="*{brand}" class="form-control mb-6 col-6" name="brands">
+            <option value="Porshe">Porshe</option>
+            <option value="Jaguar">Jaguar</option>
+            <option value="Audi">Audi</option>
+            <option value="BMW">BMW</option>
+            <option value="Mercedes">Mercedes</option>
+            <option value="Volvo">Volvo</option>
+            <option value="Volkswagen">Volkswagen</option>
+            <option value="Toyota">Toyota</option>
+            <option value="Nissan">Nissan</option>
+            <option value="Honda">Honda</option>
+            <option value="Ford">Ford</option>
+            <option value="Fiat">Fiat</option>
+            <option value="Skoda">Skoda</option>
+            <option value="Dacia">Dacia</option>
+            <option value="Renault">Renault</option>
+            <option value="Seat">Siat</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputModel" class="col-sm-2 col-form-label">Model</label>
+        <div class="col-sm-10">
+          <input type="text" th:field="*{model}" class="form-control mb-6 col-6">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputProductionYear" class="col-sm-2 col-form-label">Production Year</label>
+        <div class="col-sm-10">
+          <select th:field="*{productionYear}" class="form-control mb-6 col-6" name="productionYear">
+            <option value="2020" selected>2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+            <option value="2013">2013</option>
+            <option value="2012">2012</option>
+            <option value="2011">2011</option>
+            <option value="2010">2010</option>
+            <option value="2009">2009</option>
+            <option value="2008">2008</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputCarBody" class="col-sm-2 col-form-label">Car Body</label>
+        <div class="col-sm-10">
+          <select th:field="*{carBody}" class="form-control mb-6 col-6" name="carBody">
+            <option value="Sedan" selected>Sedan</option>
+            <option value="Coupe">Coupe</option>
+            <option value="Cabriolet">Cabriolet</option>
+            <option value="Minivan">Minivan</option>
+            <option value="Pickup">Pickup</option>
+            <option value="SUV">SUV</option>
+            <option value="Hatchback">Hatchback</option>
+            <option value="Micro"></option>
+            <option value="Universal"></option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputColor" class="col-sm-2 col-form-label">Color</label>
+        <div class="col-sm-10">
+          <select th:field="*{color}" class="form-control mb-6 col-6" name="colors">
+            <option value="Black" selected>Black</option>
+            <option value="Dark Blue">Dark Blue</option>
+            <option value="Red">Red</option>
+            <option value="Dark Green">Dark Green</option>
+            <option value="Gray">Gray</option>
+            <option value="Yellow">Yellow</option>
+            <option value="White">White</option>
+            <option value="Silver">Silver</option>
+            <option value="Brown">Brown</option>
+            <option value="Orange">Orange</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputNrOfDoors" class="col-sm-2 col-form-label">Nr. Doors</label>
+        <div class="col-sm-10">
+          <select th:field="*{nrOfDoors}" class="form-control mb-6 col-6" name="nrOfDoors">
+            <option value="5" selected>5</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputNrOfSeats" class="col-sm-2 col-form-label">Nr. Seats</label>
+        <div class="col-sm-10">
+          <select th:field="*{nrOfSeats}" class="form-control mb-6 col-6" name="nrOfSeats">
+            <option value="7">7</option>
+            <option value="5" selected>5</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputTransmission" class="col-sm-2 col-form-label">Transmission</label>
+        <div class="col-sm-10">
+          <select th:field="*{transmission}" class="form-control mb-6 col-6" name="transmission">
+            <option value="Manual">Manual</option>
+            <option value="Automatic">Automatic</option>
+            <option value="CVT">CVT</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputFuel" class="col-sm-2 col-form-label">Fuel</label>
+        <div class="col-sm-10">
+          <select th:field="*{fuel}" class="form-control mb-6 col-6" name="fuel">
+            <option value="Diesel">Diesel</option>
+            <option value="Petrol">Petrol</option>
+            <option value="Gas">Gas</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputEngine" class="col-sm-2 col-form-label">Engine</label>
+        <div class="col-sm-10">
+          <input type="text" th:field="*{engine}" class="form-control mb-6 col-6">
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label for="inputFeatures" class="col-sm-2 col-form-label">Features</label>
+        <div class="col-sm-10">
+          <input type="text" th:field="*{features}" class="form-control mb-6 col-6" >
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputCasco" class="col-sm-2 col-form-label">Casco</label>
+        <div class="col-sm-10">
+          <input type="text" th:field="*{casco}" class="form-control mb-6 col-6" >
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputPrice" class="col-sm-2 col-form-label">Price</label>
+        <div class="col-sm-10">
+          <input type="text" th:field="*{price}" class="form-control mb-6 col-6">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputStatus" class="col-sm-2 col-form-label">Status</label>
+        <div class="col-sm-10">
+          <select th:field="*{status}" class="form-control mb-4 col-4" name="status">
+            <option value="Available">Available</option>
+            <option value="Not Available">Not Available</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/cars/list}">Back to Cars List</a>
+
+  </div>
+</body>
+
+</html>

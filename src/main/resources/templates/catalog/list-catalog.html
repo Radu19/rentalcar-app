@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <base href="/">
+
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <link rel="stylesheet" type="text/css" th:href="@{css/style.css}" />
+
+  <title>Catalog</title>
+</head>
+
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+  <h1>All Cars</h1>
+
+  <br><br><br>
+
+  <div class="container">
+    <div class="row col-6" th:each="car : ${cars}">
+      <label for="brand">Brand: </label>
+      <h3 th:text="${car.brand}">default</h3>
+      <br>
+      <label for="productionYear">Production Year: </label>
+      <small th:text="${car.productionYear}">default</small>
+    </div>
+
+  </div>
+
+  <br><br><br>
+
+  <div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+
+</html>

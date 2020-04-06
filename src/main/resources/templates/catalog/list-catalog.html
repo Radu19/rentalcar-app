@@ -24,15 +24,55 @@
 
   <br><br><br>
 
-  <div class="container">
-    <div class="row col-6" th:each="car : ${cars}">
-      <label for="brand">Brand: </label>
-      <h3 th:text="${car.brand}">default</h3>
-      <br>
-      <label for="productionYear">Production Year: </label>
-      <small th:text="${car.productionYear}">default</small>
+  <div class="container-fluid">
+    <div class="col-sm-6">
+      <div class="col-md-12 pad-10 btm-mrg-20 property-">
+        <div class="row">
+          <div class="col-xs-12 col-md-5">
+            <a href="#" class="pull-left" target="_parent">
+              <img src="img/team1.png" alt="Tesla" title="Tesla" style="width:100%; min-width:200px" class="img-thumbnail">
+            </a>
+          </div>
+          <div class="col-xs-12 col-md-7">
+            <div class="visible-sm visible-xs"><br></div>
+            <h4 class="media-heading">
+              <a href="#" target="_parent">Tesla</a>
+              <small class="pull-right">
+                <span class="label label-danger" title="sports utility">Class "J"</span>
+              </small>
+            </h4>
+            <table class="table table-striped table-bordered table-condensed" style="width: 100%;">
+              <tbody>
+                <tr class="car_icons text-center">
+                  <td style="width: 20%;">
+                    <img src="img/icons/passengers-icon.png" alt="Passengers" title="Passengers">
+                    <br>5
+                  </td>
+                  <td style="width: 20%;">
+                    <img src="img/icons/baggage-icon.png" alt="Baggage" title="Baggage">
+                    <br>3
+                  </td>
+                  <td style="width: 20%;">
+                    <img src="img/icons/transmission-icon.png" alt="Transmission" title="Transmission">
+                    <br>
+                    <small>Automat</small>
+                  </td>
+                  <td style="width: 20%;">
+                    <img src="img/icons/fuel-icon.png" alt="Fuel" title="Fuel">
+                    <br>
+                    <small>Petrol</small>
+                  </td>
+                  <td style="width: 20%;">
+                    <img src="img/icons/engine-icon.png" alt="Engine" title="Engine">
+                    <br>2.4
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
 
   <br><br><br>

@@ -52,17 +52,39 @@ public class Car {
 	@Column(name="casco")
 	private double casco;
 	
-	@Column(name="price")
-	private double price;
-	
 	@Column(name="status")
 	private String status;
+
+	@Column(name="img")
+	private String img;
+
+	@Column(name="segment")
+	private String segment;
+
+	@Column(name="luggage")
+	private String luggage;
+
+	@Column(name="price1")
+	private double price1;
+
+	@Column(name="price2")
+	private double price2;
 	
+	@Column(name="price3")
+	private double price3;
+
+	@Column(name="price4")
+	private double price4;
+
+	@Column(name="price5")
+	private double price5;
+
 	public Car() {}
 
 	public Car(int id, String brand, String model, int productionYear, String carBody, String color, int nrOfDoors,
-			int nrOfSeats, String transmission, String fuel, double engine, String features, double casco, double price,
-			String status) {
+			int nrOfSeats, String transmission, String fuel, double engine, String features, double casco,
+			String status, String img, String segment, String luggage, double price1, double price2, double price3,
+			double price4, double price5) {
 		this.id = id;
 		this.brand = brand;
 		this.model = model;
@@ -76,13 +98,21 @@ public class Car {
 		this.engine = engine;
 		this.features = features;
 		this.casco = casco;
-		this.price = price;
 		this.status = status;
+		this.img = img;
+		this.segment = segment;
+		this.luggage = luggage;
+		this.price1 = price1;
+		this.price2 = price2;
+		this.price3 = price3;
+		this.price4 = price4;
+		this.price5 = price5;
 	}
 
 	public Car(String brand, String model, int productionYear, String carBody, String color, int nrOfDoors,
-			int nrOfSeats, String transmission, String fuel, double engine, String features, double casco, double price,
-			String status) {
+			int nrOfSeats, String transmission, String fuel, double engine, String features, double casco,
+			String status, String img, String segment, String luggage, double price1, double price2, double price3,
+			double price4, double price5) {
 		this.brand = brand;
 		this.model = model;
 		this.productionYear = productionYear;
@@ -95,8 +125,15 @@ public class Car {
 		this.engine = engine;
 		this.features = features;
 		this.casco = casco;
-		this.price = price;
 		this.status = status;
+		this.img = img;
+		this.segment = segment;
+		this.luggage = luggage;
+		this.price1 = price1;
+		this.price2 = price2;
+		this.price3 = price3;
+		this.price4 = price4;
+		this.price5 = price5;
 	}
 
 	public int getId() {
@@ -203,14 +240,6 @@ public class Car {
 		this.casco = casco;
 	}
 
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
 	public String getStatus() {
 		return status;
 	}
@@ -219,13 +248,81 @@ public class Car {
 		this.status = status;
 	}
 
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public String getSegment() {
+		return segment;
+	}
+
+	public void setSegment(String segment) {
+		this.segment = segment;
+	}
+
+	public String getLuggage() {
+		return luggage;
+	}
+
+	public void setLuggage(String luggage) {
+		this.luggage = luggage;
+	}
+
+	public double getPrice1() {
+		return price1;
+	}
+
+	public void setPrice1(double price1) {
+		this.price1 = price1;
+	}
+
+	public double getPrice2() {
+		return price2;
+	}
+
+	public void setPrice2(double price2) {
+		this.price2 = price2;
+	}
+
+	public double getPrice3() {
+		return price3;
+	}
+
+	public void setPrice3(double price3) {
+		this.price3 = price3;
+	}
+
+	public double getPrice4() {
+		return price4;
+	}
+
+	public void setPrice4(double price4) {
+		this.price4 = price4;
+	}
+
+	public double getPrice5() {
+		return price5;
+	}
+
+	public void setPrice5(double price5) {
+		this.price5 = price5;
+	}
+
 	@Override
 	public String toString() {
-		return "Car [id=" + id + ", brand=" + brand + ", model=" + model + ", productionYear=" + productionYear
-				+ ", carBody=" + carBody + ", color=" + color + ", nrOfDoors=" + nrOfDoors + ", nrOfSeats=" + nrOfSeats
-				+ ", transmission=" + transmission + ", fuel=" + fuel + ", engine=" + engine + ", features=" + features
-				+ ", casco=" + casco + ", price=" + price + ", status=" + status + "]";
+		return "Car [brand=" + brand + ", carBody=" + carBody + ", casco=" + casco + ", color=" + color + ", engine="
+				+ engine + ", features=" + features + ", fuel=" + fuel + ", id=" + id + ", img=" + img + ", luggage="
+				+ luggage + ", model=" + model + ", nrOfDoors=" + nrOfDoors + ", nrOfSeats=" + nrOfSeats + ", price1="
+				+ price1 + ", price2=" + price2 + ", price3=" + price3 + ", price4=" + price4 + ", price5=" + price5
+				+ ", productionYear=" + productionYear + ", segment=" + segment + ", status=" + status
+				+ ", transmission=" + transmission + "]";
 	}
+
 	
+
 	
 }

@@ -25,20 +25,20 @@
   <div class="container-fluid">
     <div class="row">
 
-      <div class="col-sm-6">
+      <div class="col-sm-6" th:each="car : ${cars}">
         <div class="col-md-12 border border-dark bg-light text-dark rounded">
           <div class="row">
             <div class="col-xs-12 col-md-5">
               <a href="#" class="float-left" target="_parent">
-                <img th:src="@{./img/cars/tesla.jpg}" alt="Tesla" title="Tesla" style="width:100%; min-width:200px" class="img-thumbnail">
+                <img th:src="@{./img/cars/{image}(image=${car.img})}" th:title="${car.brand}" th:alt="${car.brand}" style="width:100%; min-width:200px" class="img-thumbnail">
               </a>
             </div>
             <div class="col-xs-12 col-md-7">
               <div class="visible-sm visible-xs"><br></div>
               <h4 class="media-heading">
-                <a href="#" target="_parent">Tesla</a>
+                <a href="#" target="_parent">[[${car.brand}]] [[${car.model}]]</a>
                 <small class="float-right">
-                  <span class="badge badge-danger" title="sports utility">Class "J"</span>
+                  <span class="badge badge-danger" title="sports utility">Segment &nbsp; "[[${car.segment}]]"</span>
                 </small>
               </h4>
               <table class="table table-striped table-bordered table-condensed" style="width: 100%;">
@@ -46,33 +46,33 @@
                   <tr class="car-icons text-center">
                     <td style="width: 20%;">
                       <img th:src="@{img/icons/passenger.png}" alt="Passengers" title="Passengers">
-                      <br>5
+                      <br>[[${car.nrOfSeats}]]
                     </td>
                     <td style="width: 20%;">
                       <img th:src="@{img/icons/luggage.png}" alt="Luggage" title="Luggage">
-                      <br>3
+                      <br>[[${car.luggage}]]
                     </td>
                     <td style="width: 20%;">
                       <img th:src="@{img/icons/transmission.png}" alt="Transmission" title="Transmission">
                       <br>
-                      <small>Automat</small>
+                      <small>[[${car.transmission}]]</small>
                     </td>
                     <td style="width: 20%;">
                       <img th:src="@{img/icons/fuel.png}" alt="Fuel" title="Fuel">
                       <br>
-                      <small>Petrol</small>
+                      <small>[[${car.fuel}]]</small>
                     </td>
                     <td style="width: 20%;">
                       <img th:src="@{img/icons/motor.png}" alt="Engine" title="Engine">
-                      <br>2.4
+                      <br>[[${car.engine}]]
                     </td>
                   </tr>
                 </tbody>
               </table>
               <p class="hidden-xs" style="min-height: 72px;">
                 <small>
-                  <b>CASCO + 10,00 $ / day</b> |
-                  Air conditioning, Cruise Control, MP3/AUX/USB, ABS/TC/ESP, Steering Controls, 4 airbags
+                  <b>CASCO + [[${car.casco}]] € / day</b> |
+                  [[${car.features}]]
                 </small>
               </p>
             </div>
@@ -90,17 +90,17 @@
                 </thead>
                 <tbody>
                   <tr class="text-right">
-                    <td><small><span class="price">49.00</span>&nbsp;€</small></td>
-                    <td><small><span class="price">39.00</span>&nbsp;€</small></td>
-                    <td><small><span class="price">35.00</span>&nbsp;€</small></td>
-                    <td><small><span class="price">29.00</span>&nbsp;€</small></td>
-                    <td><small><span class="price">25.00</span>&nbsp;€</small></td>
+                    <td><small><span class="price" th:text="${car.price1}"></span>&nbsp;€</small></td>
+                    <td><small><span class="price" th:text="${car.price2}"></span>&nbsp;€</small></td>
+                    <td><small><span class="price" th:text="${car.price3}"></span>&nbsp;€</small></td>
+                    <td><small><span class="price" th:text="${car.price4}"></span>&nbsp;€</small></td>
+                    <td><small><span class="price" th:text="${car.price5}"></span>&nbsp;€</small></td>
                   </tr>
                 </tbody>
               </table>
             </div>
-              from <span class="badge badge-danger">25.00 €</span> to 
-              <span class="badge badge-danger">49.00 €</span> / day
+              from <span class="badge badge-danger">[[${car.price5}]] €</span> to 
+              <span class="badge badge-danger">[[${car.price1}]] €</span> / day
               <span class="float-right" style="margin-top:5px">
                 <a href="#" class="btn btn-info btn-sm">
                  <i class="fas fa-search-plus"></i> View

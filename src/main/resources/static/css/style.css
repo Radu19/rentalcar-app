@@ -162,6 +162,10 @@ hr.light-100{
   margin-top: -3rem !important;
 }
 
+.price{
+  font-weight: bold;
+}
+
 /*---Media Queries --*/
 @media (max-width: 992px) {
   .social a{

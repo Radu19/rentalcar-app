@@ -62,6 +62,23 @@ html, body{
   border: 1px solid #563d7c;
 }
 
+.btn-label {
+  position: relative;
+  left: -12px;
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(105, 105, 105, 0.15);
+  border-radius: 3px 0 0 3px;
+}
+.btn-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.btn { 
+  margin-bottom:10px; 
+}
+
 .jumbotron{
   padding: 1rem;
   border-radius: 0;

@@ -35,7 +35,7 @@
 	</ul>
 	<div class="carousel-inner">
 		<div class="carousel-item active">
-			<img th:src="@{img/background01.png}" >
+			<img th:src="@{./img/background01.png}" >
 			<div class="carousel-caption">
 				<h1 class="display-2" >RENTALCAR</h1>
 				<h3>Best Rent a Car Service</h3>
@@ -44,15 +44,15 @@
 			</div>
 		</div>
 		<div class="carousel-item">
-			<img th:src="@{img/background1.png}" >
+			<img th:src="@{./img/background1.png}" >
 		</div>
 	</div>
 </div>
 
 <!-- DatePicker-->
 
-<div id="anchor" class="container">
-	<div class="row welcome text-center padding">
+<div id="anchor" class="container welcome">
+	<div class="row text-center padding">
     <div class="col-12">
       <h2 class="display-3" >Get Your Car</h2>
     	<h4>It was never easier to find a car.</h4>
@@ -68,6 +68,7 @@
     </div>
     <button type="button" class="btn btn-primary btn-lg">Find Car</button>
   </div>
+  <hr>
 </div>
 
 <!--- Jumbotron -->
@@ -96,17 +97,17 @@
 <div class="container padding">
 	<div class="row text-center padding">
 		<div class="col-xs-12 col-sm-6 col-md-4">
-			<img class="padding" th:src="@{img/volkswagen.png}" alt="volkswagen">
+			<img class="padding" th:src="@{./img/volkswagen.png}" alt="volkswagen">
 			<h3>VOLKSWAGEN</h3>
 			<p>The Volkswagen Group was the world's leading vehicle manufacturing company.</p>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-4">
-			<img class="padding" th:src="@{img/fiat.png}" alt="fiat">
+			<img class="padding" th:src="@{./img/fiat.png}" alt="fiat">
 			<h3>FIAT</h3>
 			<p>Fiat is a leader in the European market known for their revolutionary approach.</p>
 		</div>
 		<div class="col-sm-12 col-md-4">
-			<img class="padding" th:src="@{img/volvo.png}" alt="volvo">
+			<img class="padding" th:src="@{./img/volvo.png}" alt="volvo">
 			<h3>VOLVO</h3>
 			<p>The Volvo Group is the world's best known car manufacturer when it comes to safety.</p>
 		</div>
@@ -127,38 +128,22 @@
 <!--- Cards -->
 <div class="container-fluid padding">
 	<div class="row padding">
-		<div class="col-md-4">
+		<div class="col-md-4" th:each="car : ${cars}">
 			<div class="card">
-				<img th:src="@{img/team1.png}" class="card-img-top">
+				<img th:src="@{./img/cars/{image}(image=${car.img})}" class="card-img-top">
 				<div class="card-body">
-					<h4 class="card-title">Car Model</h4>
-					<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+					<h4 class="card-title">[[${car.brand}]] [[${car.model}]]</h4>	  
+					<p class="card-text">[[${car.features}]]</p>
+					<span class="badge badge-danger float-right">From [[${car.price5}]]&nbsp;€</span>
 					<a th:href="@{#}" class="btn btn-outline-secondary">View</a>
 		</div>
 		</div>
 		</div>
-		<div class="col-md-4">
-			<div class="card">
-				<img th:src="@{img/team2.png}" class="card-img-top">
-				<div class="card-body">
-					<h4 class="card-title">Car Model</h4>
-					<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-					<a th:href="@{#}" class="btn btn-outline-secondary">View</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="card">
-				<img th:src="@{img/team3.png}" class="card-img-top">
-				<div class="card-body">
-					<h4 class="card-title">Car Model</h4>
-					<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-					<a th:href="@{#}" class="btn btn-outline-secondary">View</a>
-				</div>
-			</div>
-		</div>
+		
 		<div class="container text-center padding">
-			<button type="button" class="btn btn-primary btn-lg">View All</button>
+			<form th:action="@{/catalog/list}" method="GET">
+				<input type="submit" value="View All" class="btn btn-primary btn-lg"/>
+			</form>
 		</div>
 		</div>
 		<hr class="my-4">
@@ -177,7 +162,7 @@
 					<br>
 				</div>
 				<div class="col-lg-6">
-					<img th:src="@{img/team.png}" class="img-fluid team">
+					<img th:src="@{./img/team.png}" class="img-fluid team">
 				</div>
 			</div>
 		</div>

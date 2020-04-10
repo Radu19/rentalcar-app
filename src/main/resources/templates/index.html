@@ -72,11 +72,9 @@
 </div>
 
 <!--- Jumbotron -->
-<div class="container-fluid">
-	<div class="row jumbotron">
-			<p class="lead text-center">Unfortunately, not all cars are always available.
-				 Use the option from above to see all available cars in a certain period of time.</p>
-	</div>
+<div class="container-fluid text-center bc-maybe">
+	<h2>Maybe if...</h2>
+	<p>Unfortunately, not all cars are always available. Use the option from above to see all available cars in a certain period of time.</p>
 </div>
 
 <!--- Welcome Section -->
@@ -129,7 +127,7 @@
 <div class="container-fluid padding">
 	<div class="row padding">
 		<div class="col-md-4" th:each="car : ${cars}">
-			<div class="card">
+			<div class="card bg-light text-dark">
 				<img th:src="@{./img/cars/{image}(image=${car.img})}" class="card-img-top">
 				<div class="card-body">
 					<h4 class="card-title">[[${car.brand}]] [[${car.model}]]</h4>	  

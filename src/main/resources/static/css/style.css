@@ -84,6 +84,13 @@ html, body{
   border-radius: 0;
 }
 
+.bc-maybe{
+  background-color: #222;
+  color: #b4b4b4;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
 .padding{
   padding-bottom: 2rem;
 }

@@ -85,10 +85,11 @@ html, body{
 }
 
 .bc-extend{
-  background-color: rgb(45, 32, 50);
-  color: #b4b4b4;
-  padding-top: 110px;
-  padding-bottom: 110px;
+  background-color: #FAB700;
+  color: #222222;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  margin-bottom: 1.5rem;
 }
 
 .padding{
@@ -124,8 +125,8 @@ html, body{
 }
 
 .social a{
-  font-size: 4.5em;
-  padding: 3rem;
+  font-size: 2.5em;
+  padding: 1.5rem;
 }
 
 .fa-facebook{
@@ -291,7 +292,24 @@ figure {
 }
 
 
+.facts-area {
+  background-color: #fab700;
+}
 
+.single-fact h1 {
+  font-weight: 700;
+  font-size: 48px;
+}
+
+.single-fact p {
+  color: #222;
+}
+
+@media (max-width: 800px) {
+  .single-fact {
+    margin-bottom: 30px;
+  }
+}
 
 
 /*

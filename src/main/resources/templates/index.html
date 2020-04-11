@@ -14,130 +14,113 @@
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 	<link rel="stylesheet" type="text/css" th:href="@{css/style.css}" />
 
-	<!-- jquery-->
+	<!--datetimepicket-->
 	<link rel="stylesheet" th:href="@{css/jquery.datetimepicker.min.css}" />
-	<script type="text/javascript" th:src="@{jquery/jquery.datetimepicker.full.min.js}"></script>
 
-  <title>Rental App</title>
+	<!--For CounterUp-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+	<title>Rental App</title>
 </head>
 
 <body>
 
 	<!-- Navigation -->
-<div th:insert="~{fragments/header :: header}"></div>
+	<div th:insert="~{fragments/header :: header}"></div>
 
-<!--- Image Slider -->
+	<!--- Image Slider -->
 
-<div id="slides" class="carousel slide" data-ride="carousel">
-	<ul class="carousel-indicators">
-		<li data-target="#slides" data-slide-to="0" class="active"></li>
-		<li data-target="#slides" data-slide-to="1"></li>
-	</ul>
-	<div class="carousel-inner">
-		<div class="carousel-item active">
-			<img th:src="@{./img/background01.png}" >
-			<div class="carousel-caption">
-				<h1 class="display-2" >RENTALCAR</h1>
-				<h3>Best Rent a Car Service</h3>
-				<button type="button" class="btn btn-outline-light btn-lg">VIEW CARS</button>
-				<button type="button" class="btn btn-primary btn-lg">Contact Us</button>
+	<div id="slides" class="carousel slide" data-ride="carousel">
+		<ul class="carousel-indicators">
+			<li data-target="#slides" data-slide-to="0" class="active"></li>
+			<li data-target="#slides" data-slide-to="1"></li>
+		</ul>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img th:src="@{./img/background01.png}">
+				<div class="carousel-caption">
+					<h1 class="display-2">RENTALCAR</h1>
+					<h3>Best Rent a Car Service</h3>
+					<button type="button" class="btn btn-outline-light btn-lg">VIEW CARS</button>
+					<button type="button" class="btn btn-primary btn-lg">Contact Us</button>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img th:src="@{./img/background1.png}">
 			</div>
 		</div>
-		<div class="carousel-item">
-			<img th:src="@{./img/background1.png}" >
-		</div>
 	</div>
-</div>
 
-<!-- DatePicker-->
+	<!-- DatePicker-->
 
-<div id="anchor" class="container welcome">
-	<div class="row text-center padding">
-    <div class="col-12">
-      <h2 class="display-3" >Get Your Car</h2>
-    	<h4>It was never easier to find a car.</h4>
-    </div>
-    <hr>
-  </div>
-  <div class="container padding" style="width:350px">
-    <div class="input-group" style="margin-bottom: 25px">
-      <input type="text" id="datepicker1" class="form-control" placeholder="Start Date">
-    </div>
-    <div class="input-group" style="margin-bottom: 25px">
-      <input type="text" id="datepicker2" class="form-control" placeholder="End Date">
-    </div>
-    <button type="button" class="btn btn-primary btn-lg">Find Car</button>
-  </div>
-  <hr>
-</div>
-
-<!--- Jumbotron -->
-<div class="container-fluid text-center bc-extend">
-	<h2>WHY CHOOSE US?</h2>
-	<div class="container" style="text-align: justify;">
-		<p>We aim to provide our clients with an exceptional level of service and strive to exceed our clients’ expectations. 
-			We work closely with you to ensure we achieve the best possible result at all times, even in a pressured market.</p>
-		<p>Experienced within the property industry our dedicated team is entirely
-			 committed to give our clients a truly personalised and professional level of service at all times.</p>
-	</div>
-</div>
-
-<!--- Welcome Section -->
-<div class="container-fluid padding">
-	<div class="row welcome text-center">
-		<div class="col-12">
-			<h1 class="display-4">Our Partners</h1>
+	<div id="anchor" class="container welcome">
+		<div class="row text-center padding">
+			<div class="col-12">
+				<h2 class="display-3">Get Your Car</h2>
+				<h4>It was never easier to find a car.</h4>
+			</div>
+			<hr>
 		</div>
-		<hr>
-		<div class="col-12">
-			<p class="lead">We have leading partners in the market, which helps us to provide
-				 high quality services and products to our clients. </p>
-		</div>
-	</div>
-</div>
-
-<!--- Our Partners -->
-<div class="container padding">
-	<div class="row text-center padding">
-		<div class="col-xs-12 col-sm-6 col-md-4">
-			<img class="padding" th:src="@{./img/volkswagen.png}" alt="volkswagen">
-			<h3>VOLKSWAGEN</h3>
-			<p>The Volkswagen Group was the world's leading vehicle manufacturing company.</p>
-		</div>
-		<div class="col-xs-12 col-sm-6 col-md-4">
-			<img class="padding" th:src="@{./img/fiat.png}" alt="fiat">
-			<h3>FIAT</h3>
-			<p>Fiat is a leader in the European market known for their revolutionary approach.</p>
-		</div>
-		<div class="col-sm-12 col-md-4">
-			<img class="padding" th:src="@{./img/volvo.png}" alt="volvo">
-			<h3>VOLVO</h3>
-			<p>The Volvo Group is the world's best known car manufacturer when it comes to safety.</p>
-		</div>
-	</div>
-</div>
-<hr class="my-4">
-<!--- Our Garage -->
-<div class="container-fluid padding">
-	<div class="row welcome text-center">
-		<div class="col-12">
-			<h1 class="display-4">Our Garage</h1>
+		<div class="container padding" style="width:350px">
+			<div class="input-group" style="margin-bottom: 25px">
+				<input type="text" id="datepicker1" class="form-control" placeholder="Start Date">
+			</div>
+			<div class="input-group" style="margin-bottom: 25px">
+				<input type="text" id="datepicker2" class="form-control" placeholder="End Date">
+			</div>
+			<button type="button" class="btn btn-primary btn-lg">Find Car</button>
 		</div>
 		<hr>
 	</div>
-</div>
 
-<!--- Cards -->
-<div class="container-fluid padding">
-	<div class="row padding">
-		<div class="col-md-4" th:each="car : ${cars}">
-			<div class="card bg-light text-dark">
-				<img th:src="@{./img/cars/{image}(image=${car.img})}" class="card-img-top">
-				<div class="card-body">
-					<h4 class="card-title">[[${car.brand}]] [[${car.model}]]</h4>	  
-					<p class="card-text">[[${car.features}]]</p>
-					<span class="badge badge-danger float-right">From [[${car.price5}]]&nbsp;€</span>
-					<a th:href="@{#}" class="btn btn-outline-secondary">View</a>
+	<!--- Facts -->
+	<div class="container-fluid text-center bc-extend">
+		<div class="facts-area section-gap" id="facts-area">
+			<div class="container">
+				<div class="row">
+					<div class="col single-fact">
+						<h1 class="counter">867</h1>
+						<p>Happy Clients</p>
+					</div>
+					<div class="col single-fact">
+						<h1 class="counter">1059</h1>
+						<p>Total Transactions Completed</p>
+					</div>
+					<div class="col single-fact">
+						<h1 class="counter">2341</h1>
+						<p>Cups of Coffee Taken</p>
+					</div>
+					<div class="col single-fact">
+						<h1 class="counter">18</h1>
+						<p>In House Professionals</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--- Our Garage -->
+	<div class="container-fluid padding">
+		<div class="row welcome text-center">
+			<div class="col-12">
+				<h1 class="display-4">Our Garage</h1>
+			</div>
+			<hr>
+		</div>
+	</div>
+
+	<!--- Cards -->
+	<div class="container-fluid padding">
+		<div class="row padding">
+			<div class="col-md-4" th:each="car : ${cars}">
+				<div class="card bg-light text-dark">
+					<img th:src="@{./img/cars/{image}(image=${car.img})}" class="card-img-top">
+					<div class="card-body">
+						<h4 class="card-title">[[${car.brand}]] [[${car.model}]]</h4>
+						<p class="card-text">[[${car.features}]]</p>
+						<span class="badge badge-danger float-right">From [[${car.price5}]]&nbsp;€</span>
+						<a th:href="@{#}" class="btn btn-outline-secondary">View</a>
 		</div>
 		</div>
 		</div>
@@ -170,55 +153,97 @@
 		</div>
 		<hr class="my-4">
 
+			<!--- Welcome Section -->
+	<div class="container-fluid padding">
+		<div class="row welcome text-center">
+			<div class="col-12">
+				<h1 class="display-4">Our Partners</h1>
+			</div>
+			<hr>
+			<div class="col-12">
+				<p class="lead">We have leading partners in the market, which helps us to provide
+					high quality services and products to our clients. </p>
+			</div>
+		</div>
+	</div>
+
+	<!--- Our Partners -->
+	<div class="container padding">
+		<div class="row text-center padding">
+			<div class="col-xs-12 col-sm-6 col-md-4">
+				<img class="padding" th:src="@{./img/volkswagen.png}" alt="volkswagen">
+				<h3>VOLKSWAGEN</h3>
+				<p>The Volkswagen Group was the world's leading vehicle manufacturing company.</p>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4">
+				<img class="padding" th:src="@{./img/fiat.png}" alt="fiat">
+				<h3>FIAT</h3>
+				<p>Fiat is a leader in the European market known for their revolutionary approach.</p>
+			</div>
+			<div class="col-sm-12 col-md-4">
+				<img class="padding" th:src="@{./img/volvo.png}" alt="volvo">
+				<h3>VOLVO</h3>
+				<p>The Volvo Group is the world's best known car manufacturer when it comes to safety.</p>
+			</div>
+		</div>
+	</div>
+
 		<!--- Connect -->
 		<div class="container-fluid padding">
-			<div class="row text-center padding">
-				<div class="col-12">
-					<h2>Connect</h2>
-				</div>
+			<div class="row text-center welcome padding">
+				<hr>
 				<div class="col-12 social padding">
 					<a th:href="@{#}"><i class="fab fa-facebook"></i></a>
-			        <a th:href="@{#}"><i class="fab fa-twitter"></i></a>
+						<a th:href="@{#}"><i class="fab fa-twitter"></i></a>
 					<a th:href="@{#}"><i class="fab fa-google-plus-g"></i></a>
-					<a th:href="@{#}"><i class="fab fa-instagram"></i></a>
+						<a th:href="@{#}"><i class="fab fa-instagram"></i></a>
 					<a th:href="@{#}"><i class="fab fa-youtube"></i></a>
-		</div>
-		<div class="container">
-			<a th:href="@{#anchor}" class="btn btn-secondary btn-lg disabled" role="button" aria-disabled="true">
+					</div>
+					<div class="container">
+						<a th:href="@{#anchor}" class="btn btn-secondary btn-lg disabled" role="button" aria-disabled="true">
 				<i class="fa fa-angle-double-up" aria-hidden="true"></i>
 			</a>
 		</div>
 	</div>
 </div>
 
-
-
-
 <!--- Footer -->
 <div th:insert="~{fragments/footer :: footer}"></div>
 
-<script>
-  $('#datepicker1').datetimepicker({
-    timepicker: false,
-    datepicker: true,
-    format: 'd-m-y',
-    onShow: function(ct){
-      this.setOptions({
-        maxDate: $('#datepicker2').val() ? $('#datepicker2'):false
-      })
-    }
-  })
-  $('#datepicker2').datetimepicker({
-    timepicker: false,
-    datepicker: true,
-    format: 'd-m-y',
-    onShow: function(ct){
-      this.setOptions({
-        minDate: $('#datepicker1').val() ? $('#datepicker1'):false
-      })
-    }
-  })
+<!-- js-->
+<script type="text/javascript" th:src="@{js/jquery.datetimepicker.full.min.js}"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script th:src="@{js/jquery.counterup.min.js}"></script>
 
-</script>
+<script>
+	$('#datepicker1').datetimepicker({
+		timepicker: false,
+		datepicker: true,
+		format: 'd-m-y',
+		onShow: function (ct) {
+			this.setOptions({
+				maxDate: $('#datepicker2').val() ? $('#datepicker2') : false
+			})
+		}
+	})
+	$('#datepicker2').datetimepicker({
+		timepicker: false,
+		datepicker: true,
+		format: 'd-m-y',
+		onShow: function (ct) {
+			this.setOptions({
+				minDate: $('#datepicker1').val() ? $('#datepicker1') : false
+			})
+		}
+	})
+
+	jQuery(document).ready(function( $ ) {
+		$('.counter').counterUp({
+			delay: 10,
+			time: 1000
+		});
+	});
+  </script>
+
 </body>
 </html>

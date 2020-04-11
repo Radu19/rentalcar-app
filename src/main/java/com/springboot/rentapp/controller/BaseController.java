@@ -1,6 +1,7 @@
 package com.springboot.rentapp.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.springboot.rentapp.entity.Car;
@@ -24,30 +25,20 @@ public class BaseController {
 
 		List<Car> list = carService.findAll();
 		List<Car> myList = new ArrayList<>();
-		for(int i = 1; i<=3; i++){
+		
+		Collections.shuffle(list);
+		for(int i = 1; i < 4; i++){
 			myList.add(list.get(i));
 		}
+
 		theModel.addAttribute("cars", myList);
- 
+
 		return "index";
 	}
-	
-	// add request mapping for employees
-	
+
 	@GetMapping("/cars")
-    public String showHome() {
-        return "home";
-    }
-	
-	
+	public String showHome() {
+		return "home";
+	}
+
 }
-
-
-
-
-
-
-
-
-
-

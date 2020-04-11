@@ -11,19 +11,12 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+	<link rel="stylesheet" type="text/css" th:href="@{css/style.css}" />
+
 </head>
 
 <body>
 <div class="container">
-	<h2>Company Home Page</h2>
-	<hr>
-
-	<p>
-		Welcome to the company home page!
-	</p>
-
-	<hr>
-
 	<!-- display user name and role -->
 
 	<div>
@@ -48,9 +41,54 @@
 
 	<hr>
 
-  <p>
-		<a th:href="@{/cars/list}">Car List</a>
-	</p>
+	<section class="feature-area section-gap" id="service">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-8 pb-40 header-text">
+					<h1>Administration navigation</h1>
+					<p>
+						Our goal is to provide the best services on the market.
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-md-6 feature">
+					<a th:href="@{/cars/list}">
+						<div class="single-feature">
+							<h4><i class="fas fa-car"></i> &nbsp;Car List</h4>
+							<p>
+								Every car in this list should be up to data. 
+							</p>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg- col-md-6">
+					<div class="single-feature">
+						<h4><i class="fas fa-chart-line"></i> &nbsp;Order List</h4>
+						<p>
+							The orders should be processed as swift as possible.
+						</p>								
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<div class="single-feature">
+						<h4><i class="fas fa-comments"></i> &nbsp;Messages from clients</h4>
+						<p>
+							Every client is our friend and our critic, respect it.
+						</p>								
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<div class="single-feature">
+						<h4><i class="far fa-user"></i> &nbsp;Employees</h4>
+						<p>
+							The list of all the employees in the company.
+						</p>				
+					</div>
+				</div>	
+			</div>
+		</div>	
+	</section>
 
 
 	<!-- Add a logout button -->

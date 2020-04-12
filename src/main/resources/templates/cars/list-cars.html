@@ -30,16 +30,12 @@
 			<br><br>
 		</div>
 
-		<form th:action="@{/cars/search}" class="form-inline">
-			<a th:href="@{/cars/showFormForAdd}" class="btn btn-primary btn-sm mr-5 mb-3">
-				Add Car
-			</a>
-
-			<input class="form-control  ml-5 mr-sm-2 mb-3" type="search" name="carBrand" placeholder="Search by name" />
-
-			<button class="btn btn-success mb-3" type="submit">Search</button>
-		</form>
-
+		<div class="container">
+			<div class="row">
+				<a th:href="@{/cars/showFormForAdd}" class="btn btn-primary">Add Car</a>
+			<input class="form-control" type="search" id="myInput" name="carBrand" placeholder="Search..." />
+			</div>
+		</div>
 
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
@@ -57,7 +53,7 @@
 				</tr>
 			</thead>
 
-			<tbody>
+			<tbody id="myTable">
 				<tr th:each="tempCar : ${cars}">
 
 					<td th:text="${tempCar.brand}" />
@@ -112,6 +108,16 @@
 
 	</div>
 
+	<script>
+		$(document).ready(function(){
+		  $("#myInput").on("keyup", function() {
+			var value = $(this).val().toLowerCase();
+			$("#myTable tr").filter(function() {
+			  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		  });
+		});
+		</script>
 </body>
 
 </html>

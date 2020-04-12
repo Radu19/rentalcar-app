@@ -24,16 +24,15 @@
 		<hr>
 
 		<div>
-			User: <span sec:authentication="name"></span>
-			<br>
-			Role(s): <span sec:authentication="principal.authorities"></span>
-			<br><br>
+			<h6>
+				<b>User: </b><span sec:authentication="name"></span> <span sec:authentication="principal.authorities"></span> 
+			</h6><br>
 		</div>
 
-		<div class="container">
+		<div class="container" style="margin-bottom: 2.2rem;">
 			<div class="row">
-				<a th:href="@{/cars/showFormForAdd}" class="btn btn-primary">Add Car</a>
-			<input class="form-control" type="search" id="myInput" name="carBrand" placeholder="Search..." />
+				<a th:href="@{/cars/showFormForAdd}" class="btn btn-primary" style="margin-right: 3rem;">Add Car</a>
+				<input class="form-control col-4" type="search" id="myInput" name="carBrand" placeholder="Search..." />
 			</div>
 		</div>
 
@@ -74,7 +73,7 @@
 									Update
 								</a>
 							</div>
-
+							&nbsp;
 							<div sec:authorize="hasRole('ROLE_ADMIN')">
 								<!-- Add "delete" button/link -->
 								<a th:href="@{/cars/delete(carId=${tempCar.id})}" class="btn btn-danger btn-sm"

@@ -17,22 +17,23 @@
 
 <body>
 <div class="container">
-	<!-- display user name and role -->
-
-	<div>
-		User: <span sec:authentication="name"></span>
-		<br><br>
-		Role(s): <span sec:authentication="principal.authorities"></span>
-		<br><br>
-
-		<!-- Check for login error -->
-		<div th:if="${session.user}">
-			<p th:text="'First name: ' + ${session.user.firstName} + ', Last name: ' + ${session.user.lastName} + ', Email: ' + ${session.user.email}"></p>
-		</div>
-	</div>
-
 	<div class="container">
-		
+		<table class="table table-striped table-inverse table-responsive">
+			<thead class="thead-inverse">
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td scope="row">[[${session.user.firstName}]]</td>
+						<td>[[${session.user.lastName}]]</td>
+						<td>[[${session.user.email}]]</td>
+					</tr>
+				</tbody>
+		</table>
 	</div>
 
 	<!--Example of authorized access
@@ -53,6 +54,11 @@
 					<p>
 						Our goal is to provide the best services on the market.
 					</p>
+					<div>
+						<h6>
+							<b>User: </b><span sec:authentication="name"></span> <span sec:authentication="principal.authorities"></span> 
+						</h6>
+					</div>
 				</div>
 			</div>
 			<div class="row">

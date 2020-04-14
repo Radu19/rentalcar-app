@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.springboot.rentapp.service.UserService;
+import com.springboot.rentapp.storage.StorageProperties;
 
 @Configuration
 @EnableWebSecurity
@@ -65,6 +66,11 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.setUserDetailsService(userService); //set the custom user details service
 		auth.setPasswordEncoder(passwordEncoder()); //set the password encoder - bcrypt
 		return auth;
+	}
+
+	@Bean
+	public StorageProperties storageProperties(){
+		return new StorageProperties();
 	}
 	  
 }

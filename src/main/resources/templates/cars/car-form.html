@@ -21,7 +21,7 @@
 
   <div class="container">
 
-    <h3>Car Directory</h3>
+    <h3>Car Directory - blabla bdaf </h3>
     <hr>
 
     <form method="POST" enctype="multipart/form-data" th:action="@{/upload/image}">
@@ -31,10 +31,7 @@
       </table>
     </form>
 
-    <div class="col-sm-10">
-      <input type="text" th:value="${carName}" class="form-control mb-6 col-6"/>
-      
-    </div>
+
 
     <div th:with="carModel=${carName}">
       <div th:text="${carModel}"></div>
@@ -45,7 +42,7 @@
       <input type="hidden" th:field="*{id}" />
 
       <div class="form-group row">
-        <label for="inputBrand" class="col-sm-2 col-form-label"><b>Brand</b></label>
+        <label class="col-sm-2 col-form-label"><b>Brand</b></label>
         <div class="col-sm-10">
           <select th:field="*{brand}" class="form-control mb-6 col-6" name="brands">
             <option value="Porshe">Porshe</option>
@@ -69,14 +66,14 @@
       </div>
 
       <div class="form-group row">
-        <label for="inputModel" class="col-sm-2 col-form-label"><b>Model</b></label>
+        <label class="col-sm-2 col-form-label"><b>Model</b></label>
         <div class="col-sm-10">
           <input type="text" th:field="*{model}" class="form-control mb-6 col-6"/>
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="inputProductionYear" class="col-sm-2 col-form-label"><b>Production Year</b></label>
+        <label class="col-sm-2 col-form-label"><b>Production Year</b></label>
         <div class="col-sm-10">
           <select th:field="*{productionYear}" class="form-control mb-6 col-6" name="productionYear">
             <option value="2020" selected>2020</option>
@@ -97,7 +94,7 @@
       </div>
 
       <div class="form-group row">
-        <label for="inputCarBody" class="col-sm-2 col-form-label"><b>Car Body</b></label>
+        <label class="col-sm-2 col-form-label"><b>Car Body</b></label>
         <div class="col-sm-10">
           <select th:field="*{carBody}" class="form-control mb-6 col-6" name="carBody">
             <option value="Sedan" selected>Sedan</option>
@@ -114,7 +111,7 @@
       </div>
 
       <div class="form-group row">
-        <label for="inputColor" class="col-sm-2 col-form-label"><b>Color</b></label>
+        <label class="col-sm-2 col-form-label"><b>Color</b></label>
         <div class="col-sm-10">
           <select th:field="*{color}" class="form-control mb-6 col-6" name="colors">
             <option value="Black" selected>Black</option>
@@ -132,7 +129,7 @@
       </div>
 
       <div class="form-group row">
-        <label for="inputNrOfDoors" class="col-sm-2 col-form-label"><b>Nr. Doors</b></label>
+        <label class="col-sm-2 col-form-label"><b>Nr. Doors</b></label>
         <div class="col-sm-10">
           <select th:field="*{nrOfDoors}" class="form-control mb-6 col-6" name="nrOfDoors">
             <option value="5" selected>5</option>
@@ -143,7 +140,7 @@
       </div>
 
       <div class="form-group row">
-        <label for="inputNrOfSeats" class="col-sm-2 col-form-label"><b>Nr. Seats</b></label>
+        <label class="col-sm-2 col-form-label"><b>Nr. Seats</b></label>
         <div class="col-sm-10">
           <select th:field="*{nrOfSeats}" class="form-control mb-6 col-6" name="nrOfSeats">
             <option value="7">7</option>
@@ -155,14 +152,14 @@
       </div>
 
       <div class="form-group row">
-        <label for="inputCasco" class="col-sm-2 col-form-label"><b>Luggage</b></label>
+        <label class="col-sm-2 col-form-label"><b>Luggage</b></label>
         <div class="col-sm-10">
           <input type="text" th:field="*{luggage}" class="form-control mb-6 col-6"/>
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="inputTransmission" class="col-sm-2 col-form-label"><b>Transmission</b></label>
+        <label class="col-sm-2 col-form-label"><b>Transmission</b></label>
         <div class="col-sm-10">
           <select th:field="*{transmission}" class="form-control mb-6 col-6" name="transmission">
             <option value="Manual">Manual</option>
@@ -173,7 +170,7 @@
       </div>
 
       <div class="form-group row">
-        <label for="inputFuel" class="col-sm-2 col-form-label"><b>Fuel</b></label>
+        <label class="col-sm-2 col-form-label"><b>Fuel</b></label>
         <div class="col-sm-10">
           <select th:field="*{fuel}" class="form-control mb-6 col-6" name="fuel">
             <option value="Diesel">Diesel</option>
@@ -183,8 +180,12 @@
         </div>
       </div>
 
+      <div class="col-sm-10">
+        <input type="text" th:field="*{img}" th:value="${carName}" class="form-control mb-6 col-6"/>
+      </div>
+
       <div class="form-group row">
-        <label for="inputEngine" class="col-sm-2 col-form-label"><b>Engine</b></label>
+        <label class="col-sm-2 col-form-label"><b>Engine</b></label>
         <div class="col-sm-10">
           <input type="text" th:field="*{engine}" class="form-control mb-6 col-6"/>
         </div>
@@ -192,21 +193,21 @@
 
 
       <div class="form-group row">
-        <label for="inputFeatures" class="col-sm-2 col-form-label"><b>Features</b></label>
+        <label class="col-sm-2 col-form-label"><b>Features</b></label>
         <div class="col-sm-10">
           <input type="text" th:field="*{features}" class="form-control mb-6 col-6"/>
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="inputCasco" class="col-sm-2 col-form-label"><b>Weight</b></label>
+        <label class="col-sm-2 col-form-label"><b>Weight</b></label>
         <div class="col-sm-10">
           <input type="text" th:field="*{weight}" class="form-control mb-6 col-6"/>
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="inputFuel" class="col-sm-2 col-form-label"><b>Segment</b></label>
+        <label class="col-sm-2 col-form-label"><b>Segment</b></label>
         <div class="col-sm-10">
           <select th:field="*{segment}" class="form-control mb-6 col-6" name="fuel">
             <option value="A">A</option>
@@ -221,7 +222,7 @@
       </div>
 
       <div class="form-group row">
-        <label for="inputFuel" class="col-sm-2 col-form-label"><b>Traction</b></label>
+        <label class="col-sm-2 col-form-label"><b>Traction</b></label>
         <div class="col-sm-10">
           <select th:field="*{traction}" class="form-control mb-6 col-6" name="fuel">
             <option value="AWD">AWD</option>
@@ -233,7 +234,7 @@
       </div>
 
       <div class="form-group row">
-        <label for="inputCasco" class="col-sm-2 col-form-label"><b>Casco</b></label>
+        <label class="col-sm-2 col-form-label"><b>Casco</b></label>
         <div class="col-sm-10">
           <input type="text" th:field="*{casco}" class="form-control mb-6 col-6"/>
         </div>
@@ -241,7 +242,7 @@
 
       <!--Price-->
       <div class="form-group row">
-        <label for="inputPrice" class="col-sm-2 col-form-label"><b>Price</b></label>
+        <label class="col-sm-2 col-form-label"><b>Price</b></label>
         <div class="col-sm-10">
           <div class="input-group mb-3">
             <input type="text" class="form-control mb-6 col-6" th:field="*{price1}"/>
@@ -281,37 +282,35 @@
       </div>
 
       <div class="form-group row">
-        <label for="inputCasco" class="col-sm-2 col-form-label"><b>Garant</b></label>
+        <label class="col-sm-2 col-form-label"><b>Garant</b></label>
         <div class="col-sm-10">
           <input type="text" th:field="*{garant}" class="form-control mb-6 col-6"/>
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="inputCasco" class="col-sm-2 col-form-label"><b>Minimal Age</b></label>
+        <label class="col-sm-2 col-form-label"><b>Minimal Age</b></label>
         <div class="col-sm-10">
           <input type="text" th:field="*{minimalAge}" class="form-control mb-6 col-6"/>
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="inputCasco" class="col-sm-2 col-form-label"><b>Driving Experience</b></label>
+        <label class="col-sm-2 col-form-label"><b>Driving Experience</b></label>
         <div class="col-sm-10">
           <input type="text" th:field="*{drivingExp}" class="form-control mb-6 col-6"/>
         </div>
       </div>
 
-    
-
       <div class="form-group row">
-        <label for="inputCasco" class="col-sm-2 col-form-label"><b>Image</b></label>
+        <label class="col-sm-2 col-form-label"><b>Image</b></label>
         <div class="col-sm-10">
           <input type="text" th:field="*{img}" th:attr="value=${carModel}" class="form-control mb-6 col-6" readonly/>
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="inputStatus" class="col-sm-2 col-form-label"><b>Status</b></label>
+        <label class="col-sm-2 col-form-label"><b>Status</b></label>
         <div class="col-sm-10">
           <select th:field="*{status}" class="form-control mb-4 col-4" name="status">
             <option value="Available">Available</option>

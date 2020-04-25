@@ -37,8 +37,14 @@ public class CarController {
 	
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model theModel) {
+		String img = (String) theModel.asMap().get("carName");
+		
 		//create model attribute to bind form data
 		Car theCar = new Car();
+		
+		if(img!=null) {
+			theCar.setImg(img);
+		}
 		
 		theModel.addAttribute("car", theCar);
 		

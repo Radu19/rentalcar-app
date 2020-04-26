@@ -1,5 +1,7 @@
 package com.springboot.rentapp.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.hibernate.Session;
@@ -40,6 +42,33 @@ public class UserDaoImpl implements UserDao {
 
 		// create the user ... finally LOL
 		currentSession.saveOrUpdate(theUser);
+	}
+
+	@Override
+	public List<User> findAll() {
+		
+		Session currentSession = entityManager.unwrap(Session.class);
+		
+		Query<User> theQuery = currentSession.createQuery("from User", User.class);
+		
+		List<User> users = theQuery.getResultList();
+		
+		return users;
+	}
+
+	@Override
+	public void deleteById(Long theId) {
+		
+		Session currentSession = entityManager.unwrap(Session.class);
+		
+		User myUser = currentSession.get(User.class, theId);
+		
+		if(myUser != null) {
+			currentSession.delete(myUser);
+		}
+		System.out.println("Id parameter is: " + theId);
+		System.out.println("User object is null");
+		
 	}
 
 }

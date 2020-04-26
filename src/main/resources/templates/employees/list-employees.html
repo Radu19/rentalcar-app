@@ -13,14 +13,14 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
-	<title>Cars</title>
+	<title>Employees</title>
 </head>
 
 <body>
 
 	<div class="container">
 
-		<h3>Cars</h3>
+		<h3>Employees</h3>
 		<hr>
 
 		<div>
@@ -31,7 +31,9 @@
 
 		<div class="container" style="margin-bottom: 2.2rem;">
 			<div class="row">
-				<a th:href="@{/cars/showFormForAdd}" class="btn btn-primary" style="margin-right: 3rem;">Add Car</a>
+					<div style="margin-right: 3rem;">
+						<a th:href="@{/register/showRegistrationForm}" class="btn btn-primary" role="button" aria-pressed="true">Register New User</a>
+					</div>
 				<input class="form-control col-4" type="search" id="myInput" name="carBrand" placeholder="Search..." />
 			</div>
 		</div>
@@ -56,15 +58,14 @@
 					<td th:text="${employee.firstName}" />
 					<td th:text="${employee.lastName}" />
 					<td th:text="${employee.email}" />
-					<td text-align="center">
+					<td class="align-middle">
 							<div sec:authorize="hasRole('ROLE_ADMIN')">
 								<!-- Add "delete" button/link -->
 								<a th:href="@{/employees/delete(employeeId=${employee.id})}" class="btn btn-danger btn-sm"
 								 onclick="if (!(confirm('Are you sure you want to delete this car?'))) return false">
 									Delete
 								</a>
-							<div/>
-						</div>
+							</div>
 					</td>
 
 				</tr>

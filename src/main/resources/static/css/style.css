@@ -360,6 +360,14 @@ figure {
   }
 }
 
+.dash-box{
+  text-align: center;
+  background-color: #09b1003e;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-radius: 0.5rem;
+}
+
 
 
 /*

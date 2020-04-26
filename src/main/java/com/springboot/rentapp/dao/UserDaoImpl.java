@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.springboot.rentapp.entity.User;
 
@@ -56,18 +57,17 @@ public class UserDaoImpl implements UserDao {
 		return users;
 	}
 
+	@Transactional
+	@SuppressWarnings("unchecked")
 	@Override
 	public void deleteById(Long theId) {
 		
+		entityManager.joinTransaction();
 		Session currentSession = entityManager.unwrap(Session.class);
 		
-		User myUser = currentSession.get(User.class, theId);
-		
-		if(myUser != null) {
-			currentSession.delete(myUser);
-		}
-		System.out.println("Id parameter is: " + theId);
-		System.out.println("User object is null");
+		Query<User> theQuery = currentSession.createQuery("delete from User where id =: uId");
+		theQuery.setParameter("uId", theId);
+		theQuery.executeUpdate();
 		
 	}
 

@@ -72,15 +72,15 @@
 						</div>
 					</a>
 				</div>
-				<div class="col-lg- col-md-6">
+				<div class="col-lg- col-md-6 feature">
 					<div class="single-feature">
 						<h4><i class="fas fa-chart-line"></i> &nbsp;Order List</h4>
 						<p>
 							The orders should be processed as swift as possible.
 						</p>								
 					</div>
-				</div>
-				<div class="col-lg-6 col-md-6">
+				</div> 
+				<div class="col-lg-6 col-md-6 feature">
 					<div class="single-feature">
 						<h4><i class="fas fa-comments"></i> &nbsp;Messages from clients</h4>
 						<p>
@@ -88,18 +88,52 @@
 						</p>								
 					</div>
 				</div>
-				<div class="col-lg-6 col-md-6">
-					<div class="single-feature">
-						<h4><i class="far fa-user"></i> &nbsp;Employees</h4>
-						<p>
-							The list of all the employees in the company.
-						</p>				
-					</div>
+				<div class="col-lg-6 col-md-6 feature">
+					<a th:href="@{/employees/list}">
+						<div class="single-feature">
+							<h4><i class="far fa-user"></i> &nbsp;Employees</h4>
+							<p>
+								The list of all the employees in the company.
+							</p>				
+						</div>
+					</a>
 				</div>	
 			</div>
 		</div>	
 	</section>
 
+	<div class="panel panel-primary">
+		<div class="panel-body row">
+			<div class="col-md-3">
+				<div class="well dash-box">
+					<h2><i class="fas fa-car"></i> 12</h2>
+					<h6>Cars</h6>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="well dash-box">
+					<h2><i class="fas fa-chart-line"></i> 12</h2>
+					<h6>Orders</h6>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="well dash-box">
+					<h2><i class="fas fa-comments"></i> 12</h2>
+					<h6>Messages</h6>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="well dash-box">
+					<h2><i class="fas fa-user"></i> 12</h2>
+					<h6>Employees</h6>
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 	<!-- Add a logout button -->
 	<form action="#" th:action="@{/logout}" method="POST">

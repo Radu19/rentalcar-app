@@ -1,10 +1,16 @@
 package com.springboot.rentapp.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity	
@@ -62,7 +68,7 @@ public class Car {
 	private String segment;
 
 	@Column(name="luggage")
-	private String luggage;
+	private int luggage;
 
 	@Column(name="price1")
 	private double price1;
@@ -93,13 +99,19 @@ public class Car {
 
 	@Column(name="garant")
 	private double garant;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="car",
+			cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
+					CascadeType.DETACH, CascadeType.REFRESH})
+	private List<Order> orders;
+	
 
 
 	public Car() {}
 
 	public Car(int id, String brand, String model, int productionYear, String carBody, String color, int nrOfDoors,
 			int nrOfSeats, String transmission, String fuel, double engine, String features, double casco,
-			String status, String img, String segment, String luggage, double price1, double price2, double price3,
+			String status, String img, String segment, int luggage, double price1, double price2, double price3,
 			double price4, double price5, int weight, String traction, int minimalAge, int drivingExp, double garant) {
 		this.id = id;
 		this.brand = brand;
@@ -132,7 +144,7 @@ public class Car {
 
 	public Car(String brand, String model, int productionYear, String carBody, String color, int nrOfDoors,
 			int nrOfSeats, String transmission, String fuel, double engine, String features, double casco,
-			String status, String img, String segment, String luggage, double price1, double price2, double price3,
+			String status, String img, String segment, int luggage, double price1, double price2, double price3,
 			double price4, double price5, int weight, String traction, int minimalAge, int drivingExp, double garant) {
 		this.brand = brand;
 		this.model = model;
@@ -162,6 +174,51 @@ public class Car {
 		this.garant = garant;
 	}
 
+	public Car(String brand, String model, int productionYear, String carBody, String color, int nrOfDoors,
+			int nrOfSeats, String transmission, String fuel, double engine, String features, double casco,
+			String status, String img, String segment, int luggage, double price1, double price2, double price3,
+			double price4, double price5, int weight, String traction, int minimalAge, int drivingExp, double garant,
+			List<Order> orders) {
+		super();
+		this.brand = brand;
+		this.model = model;
+		this.productionYear = productionYear;
+		this.carBody = carBody;
+		this.color = color;
+		this.nrOfDoors = nrOfDoors;
+		this.nrOfSeats = nrOfSeats;
+		this.transmission = transmission;
+		this.fuel = fuel;
+		this.engine = engine;
+		this.features = features;
+		this.casco = casco;
+		this.status = status;
+		this.img = img;
+		this.segment = segment;
+		this.luggage = luggage;
+		this.price1 = price1;
+		this.price2 = price2;
+		this.price3 = price3;
+		this.price4 = price4;
+		this.price5 = price5;
+		this.weight = weight;
+		this.traction = traction;
+		this.minimalAge = minimalAge;
+		this.drivingExp = drivingExp;
+		this.garant = garant;
+		this.orders = orders;
+	}
+
+	//convenience method for bi-directional relationship
+	public void add(Order tempOrder) {
+			
+		if(orders == null) {
+			orders = new ArrayList<>();
+		}
+			
+		orders.add(tempOrder);
+		tempOrder.setCar(this);
+	}
 	
 	public int getId() {
 		return id;
@@ -291,11 +348,11 @@ public class Car {
 		this.segment = segment;
 	}
 
-	public String getLuggage() {
+	public int getLuggage() {
 		return luggage;
 	}
 
-	public void setLuggage(String luggage) {
+	public void setLuggage(int luggage) {
 		this.luggage = luggage;
 	}
 
@@ -377,6 +434,14 @@ public class Car {
 
 	public void setGarant(double garant) {
 		this.garant = garant;
+	}
+	
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 	@Override

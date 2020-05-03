@@ -1,7 +1,10 @@
 package com.springboot.rentapp.entity;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -32,6 +35,11 @@ public class User {
 	joinColumns = @JoinColumn(name = "user_id"), 
 	inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Collection<Role> roles;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="user",
+			cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
+					CascadeType.DETACH, CascadeType.REFRESH})
+	private List<Order> orders;
 
 	public User() {
 	}
@@ -54,6 +62,16 @@ public class User {
 		this.roles = roles;
 	}
 
+	public void add(Order tempOrder) {
+		
+		if(orders == null) {
+			orders = new ArrayList<>();
+		}
+		
+		orders.add(tempOrder);
+		tempOrder.setUser(this);
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -109,6 +127,15 @@ public class User {
 	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
 	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+	
 
 	@Override
 	public String toString() {

@@ -168,8 +168,11 @@ hr.light-100{
   vertical-align: middle;
 }
 
-.table-mrgn-top{
+.table-mrgn-top-negative{
   margin-top: -3rem !important;
+}
+.table-mrgn-bottom{
+  margin-bottom: 3rem !important;
 }
 
 .price{

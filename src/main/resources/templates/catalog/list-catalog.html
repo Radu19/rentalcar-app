@@ -77,7 +77,7 @@
               </p>
             </div>
            <div class="col-xs-12 col-md-12">
-            <div class="table-responsive table-mrgn-top"> <b class="text-left">"Standart"</b>
+            <div class="table-responsive table-mrgn-top-negative"> <b class="text-left">"Standart"</b>
               <table class="table table-bordered table-condensed">
                 <thead>
                   <tr class="table-info">
@@ -102,7 +102,7 @@
               from <span class="badge badge-danger">[[${car.price5}]] €</span> to 
               <span class="badge badge-danger">[[${car.price1}]] €</span> / day
               <span class="float-right" style="margin-top:5px">
-                <a href="#" class="btn btn-info btn-sm">
+                <a th:href="@{/catalog/view(carId=${car.id})}" class="btn btn-info btn-sm">
                  <i class="fas fa-search-plus"></i> View
                 </a>
               </span>
@@ -114,10 +114,7 @@
     </div>
     </div>
 
-    
-
   <br><br><br>
-
   <div th:insert="~{fragments/footer :: footer}"></div>
 </body>
 

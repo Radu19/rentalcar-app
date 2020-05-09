@@ -153,11 +153,17 @@
                         </tbody>
                     </table>
                 </div>
-
+                
                <form th:action="@{/catalog/reservation}" th:object="${order}" method="post">
                 <div>
                     <h4>Reservation</h4>
                     <hr>
+                    <!--Handling User & Car for Order-->
+                    <input th:value="${car.id}" th:field="*{car}" />
+                    <!-- <input th:value="${user.id}" th:field="*{user}" /> -->
+                 
+                    <input th:value="${#temporals.format(orderDateLocal, 'dd-MM-yyyy HH:mm')}" th:field="*{orderDate}" />
+
                     <div class="container padding" style="width:350px">
                         <div class="input-group" style="margin-bottom: 25px">
                             <div class="input-group-prepend">

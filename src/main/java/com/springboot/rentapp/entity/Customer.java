@@ -1,5 +1,6 @@
 package com.springboot.rentapp.entity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="customer")
 public class Customer {
@@ -23,7 +26,7 @@ public class Customer {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="firs_name")
+	@Column(name="first_name")
 	private String firstName;
 	
 	@Column(name="last_name")
@@ -41,16 +44,19 @@ public class Customer {
 	@Column(name="passport")
 	private String passport;
 	
-	@Column(name="date_birth")
-	private Date dateBirth;
+	@Column(name="date_birth", columnDefinition = "DATE")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private LocalDate dateBirth;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="user",
 			cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
 					CascadeType.DETACH, CascadeType.REFRESH})
 	private List<Order> orders;
 	
+	public Customer() {}
+	
 	public Customer(String firstName, String lastName, String email, int phoneNr, String address, String passport,
-			Date dateBirth, List<Order> orders) {
+			LocalDate dateBirth, List<Order> orders) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -63,7 +69,7 @@ public class Customer {
 	}
 
 	public Customer(String firstName, String lastName, String email, int phoneNr, String address, String passport,
-			Date dateBirth) {
+			LocalDate dateBirth) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -140,11 +146,11 @@ public class Customer {
 		this.passport = passport;
 	}
 
-	public Date getDateBirth() {
+	public LocalDate getDateBirth() {
 		return dateBirth;
 	}
 
-	public void setDateBirth(Date dateBirth) {
+	public void setDateBirth(LocalDate dateBirth) {
 		this.dateBirth = dateBirth;
 	}
 

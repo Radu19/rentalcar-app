@@ -7,6 +7,10 @@ html, body{
   color: #222;
 }
 
+.my-width{
+  width: 90%;
+}
+
 .main-section{
   padding: 20px;
 }

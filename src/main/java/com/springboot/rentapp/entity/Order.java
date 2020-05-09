@@ -1,7 +1,7 @@
 package com.springboot.rentapp.entity;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="order")
 public class Order {
@@ -22,13 +24,16 @@ public class Order {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="order_date")
-	private LocalDate orderDate;
+	@Column(name="order_date", columnDefinition = "TIMESTAMP")
+	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
+	private LocalDateTime orderDate;
 	
-	@Column(name="start_date")
+	@Column(name="start_date", columnDefinition = "TIMESTAMP")
+	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
 	private LocalDateTime startDate;
 	
-	@Column(name="end_date")
+	@Column(name="end_date", columnDefinition = "TIMESTAMP")
+	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
 	private LocalDateTime endDate;
 	
 	@Column(name="hire_days")
@@ -64,7 +69,7 @@ public class Order {
 	@JoinColumn(name="customer_id")
 	private Customer customer;
 
-	public Order(LocalDate orderDate, LocalDateTime startDate, LocalDateTime endDate, int hireDays, double totalCost, String status,
+	public Order(LocalDateTime orderDate, LocalDateTime startDate, LocalDateTime endDate, int hireDays, double totalCost, String status,
 			String paymentStatus, String paymentMethod, String details, Car car, User user, Customer customer) {
 		super();
 		this.orderDate = orderDate;
@@ -81,7 +86,7 @@ public class Order {
 		this.customer = customer;
 	}
 
-	public Order(LocalDate orderDate, LocalDateTime startDate, LocalDateTime endDate, int hireDays, double totalCost, String status,
+	public Order(LocalDateTime orderDate, LocalDateTime startDate, LocalDateTime endDate, int hireDays, double totalCost, String status,
 			String paymentStatus, String paymentMethod, String details) {
 		super();
 		this.orderDate = orderDate;
@@ -93,6 +98,9 @@ public class Order {
 		this.paymentStatus = paymentStatus;
 		this.paymentMethod = paymentMethod;
 		this.details = details;
+	}
+
+	public Order() {
 	}
 
 	public Car getCar() {
@@ -119,11 +127,11 @@ public class Order {
 		this.id = id;
 	}
 
-	public LocalDate getOrderDate() {
+	public LocalDateTime getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(LocalDate orderDate) {
+	public void setOrderDate(LocalDateTime orderDate) {
 		this.orderDate = orderDate;
 	}
 

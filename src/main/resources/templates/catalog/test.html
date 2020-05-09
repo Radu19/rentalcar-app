@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form th:action="@{/catalog/reservation}" th:object="${order}" method="POST">
+        <div>
+            <h4>Reservation</h4>
+            <hr>
+            <div class="container padding" style="width:350px">
+                <div class="input-group" style="margin-bottom: 25px">
+                    <input type="text" th:field="*{order.startDate}" id="datepicker1" class="form-control" placeholder="Date From">
+                </div>
+                <div class="input-group" style="margin-bottom: 25px">
+                    <input type="text" th:field="*{order.endDate}" id="datepicker2" class="form-control" placeholder="Date To">
+                </div>
+                <button type="submit" class="btn btn-primary">Book it</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

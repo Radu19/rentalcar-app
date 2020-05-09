@@ -1,7 +1,7 @@
 package com.springboot.rentapp.entity;
 
-import java.util.Date;
-
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,13 +23,13 @@ public class Order {
 	private int id;
 	
 	@Column(name="order_date")
-	private Date orderDate;
+	private LocalDate orderDate;
 	
 	@Column(name="start_date")
-	private Date startDate;
+	private LocalDateTime startDate;
 	
 	@Column(name="end_date")
-	private Date endDate;
+	private LocalDateTime endDate;
 	
 	@Column(name="hire_days")
 	private int hireDays;
@@ -64,7 +64,7 @@ public class Order {
 	@JoinColumn(name="customer_id")
 	private Customer customer;
 
-	public Order(Date orderDate, Date startDate, Date endDate, int hireDays, double totalCost, String status,
+	public Order(LocalDate orderDate, LocalDateTime startDate, LocalDateTime endDate, int hireDays, double totalCost, String status,
 			String paymentStatus, String paymentMethod, String details, Car car, User user, Customer customer) {
 		super();
 		this.orderDate = orderDate;
@@ -81,7 +81,7 @@ public class Order {
 		this.customer = customer;
 	}
 
-	public Order(Date orderDate, Date startDate, Date endDate, int hireDays, double totalCost, String status,
+	public Order(LocalDate orderDate, LocalDateTime startDate, LocalDateTime endDate, int hireDays, double totalCost, String status,
 			String paymentStatus, String paymentMethod, String details) {
 		super();
 		this.orderDate = orderDate;
@@ -119,27 +119,27 @@ public class Order {
 		this.id = id;
 	}
 
-	public Date getOrderDate() {
+	public LocalDate getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(Date orderDate) {
+	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;
 	}
 
-	public Date getStartDate() {
+	public LocalDateTime getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDateTime startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public LocalDateTime getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDateTime endDate) {
 		this.endDate = endDate;
 	}
 

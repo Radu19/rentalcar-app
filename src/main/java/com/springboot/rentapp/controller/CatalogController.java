@@ -1,5 +1,6 @@
 package com.springboot.rentapp.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -37,7 +38,7 @@ public class CatalogController {
 	public String viewCar(@RequestParam("carId") int theId, Model theModel) {
 		
 		Car theCar = carService.findById(theId);
-		
+		theModel.addAttribute("localDateTime", LocalDateTime.now());
 		theModel.addAttribute("car", theCar);
 		
 		return "/catalog/car-view";

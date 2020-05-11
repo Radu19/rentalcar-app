@@ -40,35 +40,7 @@
         <input type="text" th:field="*{details}"/>
     </div>
 
-    <form th:action="@{/catalog/reservation}" th:object="${order}" method="post">
-        <div>
-            <h4>Reservation</h4>
-            <hr>
-            <!--Handling User & Car for Order-->
-            <input th:value="${car.id}" th:field="*{car}" />
-            <!-- <input th:value="${user.id}" th:field="*{user}" /> -->
-         
-            <input th:value="${#temporals.format(orderDateLocal, 'dd-MM-yyyy HH:mm')}" th:field="*{orderDate}" />
-
-            <div class="container padding" style="width:350px">
-                <div class="input-group" style="margin-bottom: 25px">
-                    <div class="input-group-prepend">
-                        <button disabled="disabled"><i class="fas fa-calendar-alt"></i></button>
-                    </div>
-                    <input type="text" th:value="${#temporals.format(startDateLocal, 'dd-MM-yyyy HH:mm')}" th:field="*{startDate}" id="datepicker1" class="form-control" placeholder="Date From" autocomplete="off">
-                </div>
-                <div class="input-group" style="margin-bottom: 25px">
-                    <div class="input-group-prepend">
-                        <button disabled="disabled"><i class="fas fa-calendar-alt"></i></button>
-                    </div>
-                    <input type="text" th:value="${#temporals.format(endDateLocal, 'dd-MM-yyyy HH:mm')}" th:field="*{endDate}" id="datepicker2" class="form-control" placeholder="Date To" autocomplete="off">
-                </div>
-                <button type="submit" class="btn btn-primary">Book it</button>
-            </div>
-        </div>
-
-        <button type="submit">Submit</button>
-    </form>
+    
 
 </body>
 </html>

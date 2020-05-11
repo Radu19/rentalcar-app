@@ -154,44 +154,57 @@
                     </table>
                 </div>
                 
-             
-
-               <form th:action="@{/reservation/start}" th:object="${customer}" method="POST">
-                 <div>
-                     <h4>Reservation</h4>
-                     <hr>
-                     <input type="text" th:value="${car.id}" name="carId">
-                    <div class="input-group">
-                        <label for="">First Name</label>
-                        <input type="text" th:field="*{firstName}">
-                    </div>
-                    <div class="input-group">
-                        <label for="">Last Name</label>
-                        <input type="text" th:field="*{lastName}">
-                    </div>
-                    <div class="input-group">
-                        <label for="">Email Name</label>
-                        <input type="text" th:field="*{email}">
-                    </div>
-                    <div class="input-group">
-                        <label for="">Address Name</label>
-                        <input type="text" th:field="*{address}">
-                    </div>
-                    <div class="input-group">
-                        <label for="">PhoneNr</label>
-                        <input type="text" th:field="*{phoneNr}">
-                    </div>
-                    <div class="input-group">
-                        <label for="">Passport</label>
-                        <input type="text" th:field="*{passport}">
-                    </div>
-                    <div class="input-group">
-                        <label for="">Date Birth</label>
-                        <input type="text" th:value="${#temporals.format(dateBirth, 'yyyy-MM-dd')}" th:field="*{dateBirth}">
-                    </div>
-                 </div>
-                 <button type="submit">Submit</button>
-               </form>
+                <div class="container">
+                    <form th:action="@{/reservation/start}" th:object="${customer}" method="POST">
+                        <div>
+                            <h4>Reservation</h4>
+                            <hr>
+                           <input type="hidden" th:value="${car.id}" name="carId">
+                        </div>
+                        <div class="container-fluid">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                </div>
+                                <input type="text" class="form-control" th:field="*{firstName}" placeholder="First Name">
+                                <input type="text" class="form-control" th:field="*{lastName}" placeholder="Last Name">
+                              </div>
+    
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">@</span>
+                                </div>
+                                <input type="text" class="form-control" th:field="*{email}" placeholder="Email" >
+                            </div>
+    
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+                                </div>
+                                <input type="text" class="form-control" th:field="*{address}" placeholder="Address" >
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                </div>
+                                <input type="text" class="form-control" th:field="*{phoneNr}" placeholder="Phone" >
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fa fa-id-card" aria-hidden="true"></i></span>
+                                </div>
+                                <input type="text" class="form-control" th:field="*{passport}" placeholder="Passport" >
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-calendar"></i></i></span>
+                                </div>
+                                <input type="text" id="datepicker1" class="form-control" th:value="${#temporals.format(dateBirth, 'yyyy-MM-dd')}" th:field="*{dateBirth}" placeholder="Date of birth" autocomplete="off">
+                            </div>
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+                        </div>   
+                      </form>
+                </div>
 
             </div>
         </div>
@@ -203,28 +216,12 @@
     <script type="text/javascript" th:src="@{js/jquery.datetimepicker.full.min.js}"></script>
     <script>
         $('#datepicker1').datetimepicker({
-            timepicker: true,
+            timepicker: false,
             datepicker: true,
-            format: 'd-m-Y H:i',
-            yearStart: 2020,
-            yearEnd: 2022,
-            onShow: function (ct) {
-                this.setOptions({
-                    maxDate: $('#datepicker2').val() ? $('#datepicker2') : false
-                })
-            }
-        })
-        $('#datepicker2').datetimepicker({
-            timepicker: true,
-            datepicker: true,
-            format: 'd-m-Y H:i',
-            yearStart: 2020,
-            yearEnd: 2022,
-            onShow: function (ct) {
-                this.setOptions({
-                    minDate: $('#datepicker1').val() ? $('#datepicker1') : false
-                })
-            }
+            format: 'Y-m-d',
+            yearStart: 1965,
+            yearEnd: 2000,
+            value:'2000-01-01'
         })
 
         $(function () {

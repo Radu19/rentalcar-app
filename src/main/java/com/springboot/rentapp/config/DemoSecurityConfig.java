@@ -68,6 +68,7 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 		return auth;
 	}
 
+	// bean for storage service
 	@Bean
 	public StorageProperties storageProperties(){
 		return new StorageProperties();

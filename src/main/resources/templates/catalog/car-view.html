@@ -154,32 +154,43 @@
                     </table>
                 </div>
                 
-               <form th:action="@{/catalog/reservation}" th:object="${order}" method="post">
-                <div>
-                    <h4>Reservation</h4>
-                    <hr>
-                    <!--Handling User & Car for Order-->
-                    <input th:value="${car.id}" th:field="*{car}" />
-                    <!-- <input th:value="${user.id}" th:field="*{user}" /> -->
-                 
-                    <input th:value="${#temporals.format(orderDateLocal, 'dd-MM-yyyy HH:mm')}" th:field="*{orderDate}" />
+             
 
-                    <div class="container padding" style="width:350px">
-                        <div class="input-group" style="margin-bottom: 25px">
-                            <div class="input-group-prepend">
-                                <button disabled="disabled"><i class="fas fa-calendar-alt"></i></button>
-                            </div>
-                            <input type="text" th:value="${#temporals.format(startDateLocal, 'dd-MM-yyyy HH:mm')}" th:field="*{startDate}" id="datepicker1" class="form-control" placeholder="Date From" autocomplete="off">
-                        </div>
-                        <div class="input-group" style="margin-bottom: 25px">
-                            <div class="input-group-prepend">
-                                <button disabled="disabled"><i class="fas fa-calendar-alt"></i></button>
-                            </div>
-                            <input type="text" th:value="${#temporals.format(endDateLocal, 'dd-MM-yyyy HH:mm')}" th:field="*{endDate}" id="datepicker2" class="form-control" placeholder="Date To" autocomplete="off">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Book it</button>
+               <form th:action="@{/reservation/start}" th:object="${customer}" method="POST">
+                 <div>
+                     <h4>Reservation</h4>
+                     <hr>
+                     <input type="text" th:value="${car.id}" name="carId">
+                    <div class="input-group">
+                        <label for="">First Name</label>
+                        <input type="text" th:field="*{firstName}">
                     </div>
-                </div>
+                    <div class="input-group">
+                        <label for="">Last Name</label>
+                        <input type="text" th:field="*{lastName}">
+                    </div>
+                    <div class="input-group">
+                        <label for="">Email Name</label>
+                        <input type="text" th:field="*{email}">
+                    </div>
+                    <div class="input-group">
+                        <label for="">Address Name</label>
+                        <input type="text" th:field="*{address}">
+                    </div>
+                    <div class="input-group">
+                        <label for="">PhoneNr</label>
+                        <input type="text" th:field="*{phoneNr}">
+                    </div>
+                    <div class="input-group">
+                        <label for="">Passport</label>
+                        <input type="text" th:field="*{passport}">
+                    </div>
+                    <div class="input-group">
+                        <label for="">Date Birth</label>
+                        <input type="text" th:value="${#temporals.format(dateBirth, 'yyyy-MM-dd')}" th:field="*{dateBirth}">
+                    </div>
+                 </div>
+                 <button type="submit">Submit</button>
                </form>
 
             </div>

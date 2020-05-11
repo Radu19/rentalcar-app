@@ -1,10 +1,11 @@
 package com.springboot.rentapp.service;
 
-import com.springboot.rentapp.dao.RoleDao;
-import com.springboot.rentapp.dao.UserDao;
-import com.springboot.rentapp.entity.Role;
-import com.springboot.rentapp.entity.User;
-import com.springboot.rentapp.user.CrmUser;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,15 +15,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.springboot.rentapp.dao.RoleDao;
+import com.springboot.rentapp.dao.UserDao;
+import com.springboot.rentapp.entity.Role;
+import com.springboot.rentapp.entity.User;
+import com.springboot.rentapp.user.CrmUser;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-	// need to inject user dao
 	@Autowired
 	private UserDao userDao;
 
@@ -80,5 +81,18 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void deleteById(Long theId) {
 		userDao.deleteById(theId);
+	}
+
+	@Override
+	public User findById(Long id) {
+		
+		Optional<User> result = Optional.ofNullable(userDao.findById(id));
+		User theUser = null;
+		if(result.isPresent()) {
+			theUser = result.get();
+		}else {
+			throw new RuntimeException("Did not find user id - " + id);
+		}
+		return theUser;
 	}
 }

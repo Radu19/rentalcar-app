@@ -2,7 +2,6 @@ package com.springboot.rentapp.entity;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -45,10 +44,10 @@ public class Customer {
 	private String passport;
 	
 	@Column(name="date_birth", columnDefinition = "DATE")
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateBirth;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="user",
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="customer",
 			cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
 					CascadeType.DETACH, CascadeType.REFRESH})
 	private List<Order> orders;

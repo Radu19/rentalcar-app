@@ -13,5 +13,7 @@ public interface UserDao {
     public List<User> findAll();
 
 	public void deleteById(Long theId);
+
+	public User findById(Long id);
     
 }

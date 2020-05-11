@@ -71,4 +71,15 @@ public class UserDaoImpl implements UserDao {
 		
 	}
 
+	@Override
+	public User findById(Long id) {
+		
+		Session currentSession = entityManager.unwrap(Session.class);
+		Query<User> theQuery = currentSession.createQuery("from User where id=:uId", User.class);
+		theQuery.setParameter("uId", id);
+		User theUser = theQuery.getSingleResult();
+
+		return theUser;
+	}
+
 }

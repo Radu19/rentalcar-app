@@ -17,4 +17,6 @@ public interface UserService extends UserDetailsService {
 
 	public void deleteById(Long theId);
 
+	public User findById(Long id);
+
 }

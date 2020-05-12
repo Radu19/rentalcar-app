@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="order")
+@Table(name="orders")
 public class Order {
 
 	@Id
@@ -51,6 +51,9 @@ public class Order {
 	@Column(name="payment_method")
 	private String paymentMethod;
 	
+	@Column(name="casco")
+	private String casco;
+	
 	@Column(name="details")
 	private String details;
 	
@@ -70,7 +73,7 @@ public class Order {
 	private Customer customer;
 
 	public Order(LocalDateTime orderDate, LocalDateTime startDate, LocalDateTime endDate, int hireDays, double totalCost, String status,
-			String paymentStatus, String paymentMethod, String details, Car car, User user, Customer customer) {
+			String paymentStatus, String paymentMethod, String casco,String details, Car car, User user, Customer customer) {
 		super();
 		this.orderDate = orderDate;
 		this.startDate = startDate;
@@ -80,6 +83,7 @@ public class Order {
 		this.status = status;
 		this.paymentStatus = paymentStatus;
 		this.paymentMethod = paymentMethod;
+		this.casco = casco;
 		this.details = details;
 		this.car = car;
 		this.user = user;
@@ -87,7 +91,7 @@ public class Order {
 	}
 
 	public Order(LocalDateTime orderDate, LocalDateTime startDate, LocalDateTime endDate, int hireDays, double totalCost, String status,
-			String paymentStatus, String paymentMethod, String details) {
+			String paymentStatus, String paymentMethod, String casco, String details) {
 		super();
 		this.orderDate = orderDate;
 		this.startDate = startDate;
@@ -97,10 +101,19 @@ public class Order {
 		this.status = status;
 		this.paymentStatus = paymentStatus;
 		this.paymentMethod = paymentMethod;
+		this.casco = casco;
 		this.details = details;
 	}
 
 	public Order() {
+	}
+
+	public String getCasco() {
+		return casco;
+	}
+
+	public void setCasco(String casco) {
+		this.casco = casco;
 	}
 
 	public Car getCar() {
@@ -211,8 +224,9 @@ public class Order {
 	public String toString() {
 		return "Order [id=" + id + ", orderDate=" + orderDate + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", hireDays=" + hireDays + ", totalCost=" + totalCost + ", status=" + status + ", paymentStatus="
-				+ paymentStatus + ", paymentMethod=" + paymentMethod + ", details=" + details + ", car=" + car
-				+ ", user=" + user + ", customer=" + customer + "]";
+				+ paymentStatus + ", paymentMethod=" + paymentMethod + ", casco=" + casco + ", details=" + details
+				+ ", car=" + car + ", user=" + user + ", customer=" + customer + "]";
 	}
+
 	
 }

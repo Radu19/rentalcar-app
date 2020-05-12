@@ -12,12 +12,8 @@ import com.springboot.rentapp.entity.Customer;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-	private CustomerRepository customerRepository;
-
 	@Autowired
-	public CustomerServiceImpl(CustomerRepository theCustomerRepository) {
-		customerRepository = theCustomerRepository;
-	}
+	private CustomerRepository customerRepository;
 
 	@Override
 	public List<Customer> findAll() {

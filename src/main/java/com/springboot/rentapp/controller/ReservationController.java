@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.springboot.rentapp.entity.Car;
 import com.springboot.rentapp.entity.Customer;
 import com.springboot.rentapp.entity.Order;
+import com.springboot.rentapp.entity.User;
 import com.springboot.rentapp.service.CarService;
 import com.springboot.rentapp.service.CustomerService;
 import com.springboot.rentapp.service.OrderService;
@@ -56,8 +58,11 @@ public class ReservationController {
 		
 		int customerId = (int) theModel.asMap().get("customerId");
 		int carId = (int) theModel.asMap().get("carId");
-		
 		System.out.println("CarId" + carId + "\nCustomerId"+ customerId);
+		
+		Car theCar = carService.findById(carId);
+		Customer theCustomer = customerService.findById(customerId);
+		User theUser = userService.findById(adminId);
 		
 		LocalDateTime orderDateLocal = LocalDateTime.now();
 		LocalDateTime startDateLocal = LocalDateTime.now().plusDays(1);
@@ -66,6 +71,10 @@ public class ReservationController {
 		Order theOrder = null;
 		try {
 			theOrder = new Order();
+			theOrder.setCar(theCar);
+			theOrder.setUser(theUser);
+			theOrder.setCustomer(theCustomer);
+			
 			theOrder.setOrderDate(orderDateLocal);
 			theOrder.setStartDate(startDateLocal);
 			theOrder.setEndDate(endDateLocal);
@@ -74,6 +83,7 @@ public class ReservationController {
 			e.printStackTrace();
 		}
 		theModel.addAttribute("order", theOrder);
+		theModel.addAttribute("car", theCar);
 		System.out.println("Order from reservation/form <<<" + theOrder);
 		
 		return "/catalog/order-form";

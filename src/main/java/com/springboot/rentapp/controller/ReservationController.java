@@ -83,8 +83,7 @@ public class ReservationController {
 			theOrder.setOrderDate(orderDateLocal);
 			theOrder.setStartDate(startDateLocal);
 			theOrder.setEndDate(endDateLocal);
-		}
-		catch(Exception e) {
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		theModel.addAttribute("order", theOrder);
@@ -108,8 +107,7 @@ public class ReservationController {
 		Car theCar = null;
 		try {
 			theCar = theOrder.getCar();
-		}
-		catch(Exception e) {
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		double totalCost = days*determinePrice(days, theCar);
@@ -135,7 +133,13 @@ public class ReservationController {
 	public String reservationComplete(Model theModel) {
 		
 		Order theOrder = (Order) theModel.asMap().get("order");
-		
+		Car theCar = null;
+		try {
+			theCar = theOrder.getCar();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		theModel.addAttribute("car", theCar);
 		return "/catalog/order-overview";
 	}
 	

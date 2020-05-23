@@ -152,7 +152,7 @@ public class Customer {
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", phoneNr=" + phoneNr + ", address=" + address + ", dateBirth="
-				+ dateBirth + ", orders=" + orders + "]";
+				+ dateBirth ;
 	}
 	
 	

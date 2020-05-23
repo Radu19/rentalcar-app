@@ -45,4 +45,19 @@ public class CustomerServiceImpl implements CustomerService {
 		customerRepository.deleteById(theId);
 	}
 
+	@Override
+	public Customer findByPhoneNr(int phoneNr) {
+		
+		Optional<Customer> result = Optional.ofNullable(customerRepository.findByPhoneNr(phoneNr));
+		Customer theCustomer = null;
+		if(result.isPresent()) {
+			theCustomer = result.get();
+		}else {
+			System.out.println("Didn't find this number.");
+			theCustomer = null;
+		}
+		
+		return theCustomer;
+	}
+
 }

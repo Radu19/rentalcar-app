@@ -49,11 +49,8 @@ public class UserDaoImpl implements UserDao {
 	public List<User> findAll() {
 		
 		Session currentSession = entityManager.unwrap(Session.class);
-		
 		Query<User> theQuery = currentSession.createQuery("from User", User.class);
-		
 		List<User> users = theQuery.getResultList();
-		
 		return users;
 	}
 

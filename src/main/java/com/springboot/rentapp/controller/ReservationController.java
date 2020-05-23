@@ -44,7 +44,14 @@ public class ReservationController {
 	public String reservation(@ModelAttribute("customer") Customer theCustomer, @RequestParam("carId") int carId ,RedirectAttributes redirectAttributes) {
 		System.out.println("\nPostMapping /start <><><> \n");
 		
-		customerService.save(theCustomer);
+		int phoneNr = theCustomer.getPhoneNr();
+		Customer extractCustomer = customerService.findByPhoneNr(phoneNr);
+		if(extractCustomer!=null) {
+			theCustomer = extractCustomer;
+		}else {
+			customerService.save(theCustomer);
+		}
+		
 		
 		redirectAttributes.addFlashAttribute("customerId", theCustomer.getId());
 		redirectAttributes.addFlashAttribute("carId", carId);

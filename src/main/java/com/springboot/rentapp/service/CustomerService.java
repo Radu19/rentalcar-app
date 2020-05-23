@@ -10,6 +10,8 @@ public interface CustomerService {
 	
 	public Customer findById(int theId);
 	
+	public Customer findByPhoneNr(int phoneNr);
+	
 	public void save(Customer theCustomer);
 	
 	public void deleteById(int theId);

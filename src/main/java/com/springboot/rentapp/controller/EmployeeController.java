@@ -32,9 +32,7 @@ public class EmployeeController {
 	public String delete(@RequestParam("employeeId") Long theId) {
 		
 		userService.deleteById(theId);
-		
-		System.out.println("In method delete");
-		
+				
 		return "redirect:/employees/list";
 	}
 }

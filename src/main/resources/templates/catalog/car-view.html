@@ -191,12 +191,6 @@
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                  <span class="input-group-text"><i class="fa fa-id-card" aria-hidden="true"></i></span>
-                                </div>
-                                <input type="text" class="form-control" th:field="*{passport}" placeholder="Passport" >
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="fas fa-calendar"></i></i></span>
                                 </div>
                                 <input type="text" id="datepicker1" class="form-control" th:value="${#temporals.format(dateBirth, 'yyyy-MM-dd')}" 

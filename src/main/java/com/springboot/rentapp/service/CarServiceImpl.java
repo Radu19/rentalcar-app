@@ -12,12 +12,8 @@ import com.springboot.rentapp.entity.Car;
 @Service
 public class CarServiceImpl implements CarService {
 	
-	private CarRepository carRepository;
-
 	@Autowired
-	public CarServiceImpl(CarRepository theCarRepository) {
-		carRepository = theCarRepository;
-	}
+	private CarRepository carRepository;  
 	
 	@Override
 	public List<Car> findAll() {

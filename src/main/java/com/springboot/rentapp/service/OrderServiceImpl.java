@@ -12,12 +12,8 @@ import com.springboot.rentapp.entity.Order;
 @Service
 public class OrderServiceImpl implements OrderService {
 
-	private OrderRepository orderRepository;
-
 	@Autowired
-	public OrderServiceImpl(OrderRepository theOrderRepository) {
-		orderRepository = theOrderRepository;
-	}
+	private OrderRepository orderRepository;
 
 	@Override
 	public List<Order> findAll() {

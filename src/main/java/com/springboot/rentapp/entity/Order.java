@@ -37,7 +37,7 @@ public class Order {
 	private LocalDateTime endDate;
 	
 	@Column(name="hire_days")
-	private int hireDays;
+	private long hireDays;
 	
 	@Column(name="total_cost")
 	private double totalCost;
@@ -52,7 +52,7 @@ public class Order {
 	private String paymentMethod;
 	
 	@Column(name="casco")
-	private String casco;
+	private boolean casco;
 	
 	@Column(name="details")
 	private String details;
@@ -72,8 +72,8 @@ public class Order {
 	@JoinColumn(name="customer_id")
 	private Customer customer;
 
-	public Order(LocalDateTime orderDate, LocalDateTime startDate, LocalDateTime endDate, int hireDays, double totalCost, String status,
-			String paymentStatus, String paymentMethod, String casco,String details, Car car, User user, Customer customer) {
+	public Order(LocalDateTime orderDate, LocalDateTime startDate, LocalDateTime endDate, long hireDays, double totalCost, String status,
+			String paymentStatus, String paymentMethod, boolean casco,String details, Car car, User user, Customer customer) {
 		super();
 		this.orderDate = orderDate;
 		this.startDate = startDate;
@@ -90,8 +90,8 @@ public class Order {
 		this.customer = customer;
 	}
 
-	public Order(LocalDateTime orderDate, LocalDateTime startDate, LocalDateTime endDate, int hireDays, double totalCost, String status,
-			String paymentStatus, String paymentMethod, String casco, String details) {
+	public Order(LocalDateTime orderDate, LocalDateTime startDate, LocalDateTime endDate, long hireDays, double totalCost, String status,
+			String paymentStatus, String paymentMethod, boolean casco, String details) {
 		super();
 		this.orderDate = orderDate;
 		this.startDate = startDate;
@@ -108,11 +108,11 @@ public class Order {
 	public Order() {
 	}
 
-	public String getCasco() {
+	public boolean getCasco() {
 		return casco;
 	}
 
-	public void setCasco(String casco) {
+	public void setCasco(boolean casco) {
 		this.casco = casco;
 	}
 
@@ -164,11 +164,11 @@ public class Order {
 		this.endDate = endDate;
 	}
 
-	public int getHireDays() {
+	public long getHireDays() {
 		return hireDays;
 	}
 
-	public void setHireDays(int hireDays) {
+	public void setHireDays(long hireDays) {
 		this.hireDays = hireDays;
 	}
 

@@ -6,7 +6,7 @@ import com.springboot.rentapp.entity.Order;
 
 public interface OrderService {
 
-public List<Order> findAll();
+	public List<Order> findAll();
 	
 	public Order findById(int theId);
 	

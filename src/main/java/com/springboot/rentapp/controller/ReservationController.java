@@ -1,6 +1,7 @@
 package com.springboot.rentapp.controller;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,7 +63,6 @@ public class ReservationController {
 		
 		Car theCar = carService.findById(carId);
 		Customer theCustomer = customerService.findById(customerId);
-		User theUser = userService.findById(adminId);
 		
 		LocalDateTime orderDateLocal = LocalDateTime.now();
 		LocalDateTime startDateLocal = LocalDateTime.now().plusDays(1);
@@ -72,7 +72,6 @@ public class ReservationController {
 		try {
 			theOrder = new Order();
 			theOrder.setCar(theCar);
-			theOrder.setUser(theUser);
 			theOrder.setCustomer(theCustomer);
 			
 			theOrder.setOrderDate(orderDateLocal);
@@ -84,7 +83,8 @@ public class ReservationController {
 		}
 		theModel.addAttribute("order", theOrder);
 		theModel.addAttribute("car", theCar);
-		System.out.println("Order from reservation/form <<<" + theOrder);
+		theModel.addAttribute("customer", theCustomer);
+		System.out.println("Order from /form <<<" + theOrder);
 		
 		return "/catalog/order-form";
 	}
@@ -92,6 +92,36 @@ public class ReservationController {
 	@PostMapping("/complete")
 	public String reservationComplete(@ModelAttribute("order") Order theOrder, RedirectAttributes redirectAttributes) {
 		System.out.println("\nPostMapping /complete <><><> \n");
+		
+		User theUser = userService.findById(adminId);
+		
+		LocalDateTime startDate = theOrder.getStartDate();
+		LocalDateTime endDate = theOrder.getEndDate();
+		int days = (int) ChronoUnit.DAYS.between(startDate, endDate);
+		theOrder.setHireDays(days);
+		
+		Car theCar = null;
+		try {
+			theCar = theOrder.getCar();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		double totalCost = days*determinePrice(days, theCar);
+		
+		if(theOrder.getCasco()!=false) {
+			totalCost+=days*theCar.getCasco();
+		}
+		
+		theOrder.setTotalCost(totalCost);
+		theOrder.setUser(theUser);
+		theOrder.setPaymentStatus("Pending");
+		theOrder.setStatus("In Process");
+		
+		
+		
+		System.out.println(theOrder);
+		orderService.save(theOrder);
 		
 		redirectAttributes.addFlashAttribute("order", theOrder);
 		
@@ -106,5 +136,21 @@ public class ReservationController {
 		System.out.println("Order from /complete>>>" + theOrder);
 		
 		return "/catalog/order-overview";
+	}
+	
+	public double determinePrice(int hireDays, Car theCar) {
+		double price = 0;
+		if(hireDays < 3) {
+			price = theCar.getPrice1();
+		}else if(hireDays > 3 && hireDays <= 7) {
+			price = theCar.getPrice2();
+		}else if(hireDays > 7 && hireDays <= 14){
+			price = theCar.getPrice3();
+		}else if(hireDays > 14 && hireDays <= 364) {
+			price = theCar.getPrice4();
+		}else{
+			price = theCar.getPrice5();
+		}
+		return price;
 	}
 }

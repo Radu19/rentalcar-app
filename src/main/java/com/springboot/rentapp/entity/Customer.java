@@ -40,9 +40,6 @@ public class Customer {
 	@Column(name="address")
 	private String address;
 	
-	@Column(name="passport")
-	private String passport;
-	
 	@Column(name="date_birth", columnDefinition = "DATE")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateBirth;
@@ -54,7 +51,7 @@ public class Customer {
 	
 	public Customer() {}
 	
-	public Customer(String firstName, String lastName, String email, int phoneNr, String address, String passport,
+	public Customer(String firstName, String lastName, String email, int phoneNr, String address,
 			LocalDate dateBirth, List<Order> orders) {
 		super();
 		this.firstName = firstName;
@@ -62,12 +59,11 @@ public class Customer {
 		this.email = email;
 		this.phoneNr = phoneNr;
 		this.address = address;
-		this.passport = passport;
 		this.dateBirth = dateBirth;
 		this.orders = orders;
 	}
 
-	public Customer(String firstName, String lastName, String email, int phoneNr, String address, String passport,
+	public Customer(String firstName, String lastName, String email, int phoneNr, String address,
 			LocalDate dateBirth) {
 		super();
 		this.firstName = firstName;
@@ -75,7 +71,6 @@ public class Customer {
 		this.email = email;
 		this.phoneNr = phoneNr;
 		this.address = address;
-		this.passport = passport;
 		this.dateBirth = dateBirth;
 	}
 
@@ -137,14 +132,6 @@ public class Customer {
 		this.address = address;
 	}
 
-	public String getPassport() {
-		return passport;
-	}
-
-	public void setPassport(String passport) {
-		this.passport = passport;
-	}
-
 	public LocalDate getDateBirth() {
 		return dateBirth;
 	}
@@ -164,7 +151,7 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", phoneNr=" + phoneNr + ", address=" + address + ", passport=" + passport + ", dateBirth="
+				+ ", phoneNr=" + phoneNr + ", address=" + address + ", dateBirth="
 				+ dateBirth + ", orders=" + orders + "]";
 	}
 	

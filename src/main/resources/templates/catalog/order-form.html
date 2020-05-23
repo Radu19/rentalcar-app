@@ -49,18 +49,16 @@
                         <input type="text" class="form-control" th:value="${#temporals.format(endDateLocal, 'dd-MM-yyyy HH:mm')}" th:field="*{endDate}" id="datepicker2" placeholder="End date" autocomplete="off">
                     </div>
 
-                    <div class="form-group">
-                        <div class="col-12">
-                          <select th:field="*{paymentMethod}" class="form-control" name="paymentMethod">
-                              <option value="" selected disabled>Payment Method</option>
+                    <div class="input-group mb-3">
+                        <textarea th:field="*{details}" class="form-control" style="width: 100%;" rows="3" placeholder="Additional requirements"></textarea>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <select th:field="*{paymentMethod}" class="form-control" name="paymentMethod">
+                            <option value="" selected disabled>Payment Method</option>
                             <option value="Card">Card</option>
                             <option value="Cash">Cash</option>
                           </select>
-                        </div>
-                      </div>
-
-                    <div class="input-group mb-3">
-                        <textarea th:field="*{details}" class="form-control" style="width: 100%;" rows="3" placeholder="Additional requirements"></textarea>
                     </div>
 
                     <div class="form-check">

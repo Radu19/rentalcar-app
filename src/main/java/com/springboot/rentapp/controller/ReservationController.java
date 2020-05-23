@@ -52,7 +52,6 @@ public class ReservationController {
 			customerService.save(theCustomer);
 		}
 		
-		
 		redirectAttributes.addFlashAttribute("customerId", theCustomer.getId());
 		redirectAttributes.addFlashAttribute("carId", carId);
 		
@@ -91,7 +90,6 @@ public class ReservationController {
 		theModel.addAttribute("order", theOrder);
 		theModel.addAttribute("car", theCar);
 		theModel.addAttribute("customer", theCustomer);
-		System.out.println("Order from /form <<<" + theOrder);
 		
 		return "/catalog/order-form";
 	}
@@ -125,9 +123,6 @@ public class ReservationController {
 		theOrder.setPaymentStatus("Pending");
 		theOrder.setStatus("In Process");
 		
-		
-		
-		System.out.println(theOrder);
 		orderService.save(theOrder);
 		
 		redirectAttributes.addFlashAttribute("order", theOrder);
@@ -140,7 +135,6 @@ public class ReservationController {
 	public String reservationComplete(Model theModel) {
 		
 		Order theOrder = (Order) theModel.asMap().get("order");
-		System.out.println("Order from /complete>>>" + theOrder);
 		
 		return "/catalog/order-overview";
 	}

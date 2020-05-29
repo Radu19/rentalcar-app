@@ -2,6 +2,7 @@ package com.springboot.rentapp.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,11 +18,8 @@ import com.springboot.rentapp.service.CarService;
 @RequestMapping("/cars")
 public class CarController {
 
+	@Autowired
 	private CarService carService;
-	
-	public CarController(CarService theCarService) {
-		carService = theCarService;
-	}
 	
 	@GetMapping("/list")
 	public String listCars(Model theModel) {

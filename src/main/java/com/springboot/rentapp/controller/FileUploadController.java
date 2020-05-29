@@ -12,7 +12,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,12 +33,6 @@ public class FileUploadController {
 		this.storageService = storageService;
 	}
 
-	@GetMapping("/image")
-	public String listUploadedFiles(Model model) throws IOException {
-
-		return "uploadForm";
-	}
-
 	@GetMapping("/files/{filename:.+}")
 	@ResponseBody
 	public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
@@ -59,9 +52,10 @@ public class FileUploadController {
 		String directoryString = "src/main/resources/static/img/docs";
 		File theFile = new File(directoryString, file.getOriginalFilename());
 		FileUtils.writeByteArrayToFile(theFile, file.getBytes());
-
+		
 		return "redirect:/cars/showFormForAdd";
 	}
+	
 
 	@ExceptionHandler(StorageFileNotFoundException.class)
 	public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {

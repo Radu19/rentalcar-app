@@ -13,8 +13,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.springboot.rentapp.validation.ValidEmail;
 
 @Entity
 @Table(name="customer")
@@ -31,6 +35,9 @@ public class Customer {
 	@Column(name="last_name")
 	private String lastName;
 	
+	@ValidEmail
+	@NotNull(message = "This field is required")
+	@Size(min = 1, message = "This field is required")
 	@Column(name="email")
 	private String email;
 	

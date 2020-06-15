@@ -3,9 +3,12 @@ package com.springboot.rentapp.controller;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,8 +26,8 @@ import com.springboot.rentapp.service.OrderService;
 import com.springboot.rentapp.service.UserService;
 
 @Controller
-@RequestMapping("/reservation")
-public class ReservationController {
+@RequestMapping("/order")
+public class OrderController {
 	
 	private Long adminId = (long) 3;
 	
@@ -41,8 +44,15 @@ public class ReservationController {
 	private OrderService orderService;
 
 	@PostMapping("/start")
-	public String reservation(@ModelAttribute("customer") Customer theCustomer, @RequestParam("carId") int carId ,RedirectAttributes redirectAttributes) {
+	public String reservation(@Valid @ModelAttribute("customer") Customer theCustomer, BindingResult theBindingResult, @RequestParam("carId") int carId ,RedirectAttributes redirectAttributes) {
 		System.out.println("\nPostMapping /start <><><> \n");
+		
+		if(theBindingResult.hasErrors()) {
+			System.out.println("Errors>>>>>" + theBindingResult);
+			redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.customer", theBindingResult);
+			redirectAttributes.addFlashAttribute("customer", theCustomer);
+			return "redirect:/catalog/view?carId="+carId;
+		}
 		
 		int phoneNr = theCustomer.getPhoneNr();
 		Customer extractCustomer = customerService.findByPhoneNr(phoneNr);
@@ -56,7 +66,7 @@ public class ReservationController {
 		redirectAttributes.addFlashAttribute("carId", carId);
 		
 		System.out.println("CarId" + carId);
-		return "redirect:/reservation/form";
+		return "redirect:/order/form";
 	}
 	
 	@GetMapping("/form")
@@ -90,7 +100,7 @@ public class ReservationController {
 		theModel.addAttribute("car", theCar);
 		theModel.addAttribute("customer", theCustomer);
 		
-		return "/catalog/order-form";
+		return "/order/order-form";
 	}
 	
 	@PostMapping("/complete")
@@ -126,7 +136,7 @@ public class ReservationController {
 		redirectAttributes.addFlashAttribute("order", theOrder);
 		
 		
-		return "redirect:/reservation/complete";
+		return "redirect:/order/complete";
 	}
 	
 	@GetMapping("/complete")
@@ -140,7 +150,7 @@ public class ReservationController {
 			e.printStackTrace();
 		}
 		theModel.addAttribute("car", theCar);
-		return "/catalog/order-overview";
+		return "/order/order-overview";
 	}
 	
 	public double determinePrice(int hireDays, Car theCar) {

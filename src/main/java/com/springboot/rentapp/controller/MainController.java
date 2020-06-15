@@ -12,11 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class BaseController {
+public class MainController {
 
 	private final CarService carService;
 
-	public BaseController(CarService theCarService) {
+	public MainController(CarService theCarService) {
 		carService = theCarService;
 	}
 

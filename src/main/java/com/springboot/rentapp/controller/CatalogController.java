@@ -37,15 +37,15 @@ public class CatalogController {
 	@GetMapping("/view")
 	public String viewCar(@RequestParam("carId") int theId, Model theModel) {
 		System.out.println("GetMapping /view <><><> \n");
-			
+		
+		if(!theModel.containsAttribute("customer")) {
+			Customer theCustomer = new Customer();
+			LocalDate dateBirth = null;
+			theCustomer.setDateBirth(dateBirth);
+			theModel.addAttribute("customer", theCustomer);
+		}
 		Car theCar = carService.findById(theId);
-		
-		LocalDate dateBirth = null;
-		Customer theCustomer = new Customer();
-		theCustomer.setDateBirth(dateBirth);
-		
 		theModel.addAttribute("car", theCar);
-		theModel.addAttribute("customer", theCustomer);
 		
 		return "/catalog/car-view";
 	}

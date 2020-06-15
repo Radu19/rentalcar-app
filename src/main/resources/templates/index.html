@@ -50,9 +50,9 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<!-- DatePicker-->
-
+	
 	<div id="anchor" class="container welcome">
 		<div class="row text-center padding">
 			<div class="col-12">
@@ -72,7 +72,7 @@
 		</div>
 		<hr>
 	</div>
-
+	
 	<!--- Facts -->
 	<div class="container-fluid text-center bc-extend">
 		<div class="facts-area section-gap" id="facts-area">
@@ -98,8 +98,8 @@
 			</div>
 		</div>
 	</div>
-
-
+	
+	
 	<!--- Our Garage -->
 	<div class="container-fluid padding">
 		<div class="row welcome text-center">
@@ -109,7 +109,7 @@
 			<hr>
 		</div>
 	</div>
-
+	
 	<!--- Cards -->
 	<div class="container-fluid padding">
 		<div class="row padding">
@@ -121,19 +121,19 @@
 						<p class="card-text">[[${car.features}]]</p>
 						<span class="badge badge-danger float-right">From [[${car.price5}]]&nbsp;€</span>
 						<a th:href="@{#}" class="btn btn-outline-secondary">View</a>
-		</div>
-		</div>
-		</div>
+					</div>
+				</div>
+			</div>
 		
-		<div class="container text-center padding">
-			<form th:action="@{/catalog/list}" method="GET">
-				<input type="submit" value="View All" class="btn btn-primary btn-lg"/>
-			</form>
-		</div>
+			<div class="container text-center padding">
+				<form th:action="@{/catalog/list}" method="GET">
+					<input type="submit" value="View All" class="btn btn-primary btn-lg"/>
+				</form>
+			</div>
 		</div>
 		<hr class="my-4">
 		</div>
-
+	
 		<!--- Two Column Section -->
 		<div class="container padding">
 			<div class="row padding">
@@ -152,7 +152,7 @@
 			</div>
 		</div>
 		<hr class="my-4">
-
+	
 			<!--- Welcome Section -->
 	<div class="container-fluid padding">
 		<div class="row welcome text-center">
@@ -166,7 +166,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<!--- Our Partners -->
 	<div class="container padding">
 		<div class="row text-center padding">
@@ -187,7 +187,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 		<!--- Connect -->
 		<div class="container-fluid padding">
 			<div class="row text-center welcome padding">
@@ -201,7 +201,7 @@
 				</div>
 			</div>
 		</div>
-</div>
+
 
 <!--- Footer -->
 <div th:insert="~{fragments/footer :: footer}"></div>

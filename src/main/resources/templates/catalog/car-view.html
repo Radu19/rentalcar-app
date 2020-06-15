@@ -155,7 +155,7 @@
                 </div>
                 
                 <div class="container">
-                    <form th:action="@{/reservation/start}" th:object="${customer}" method="POST">
+                    <form th:action="@{/order/start}" th:object="${customer}" method="POST">
                         <div>
                             <h4>Reservation</h4>
                             <hr>
@@ -176,6 +176,12 @@
                                 </div>
                                 <input type="text" class="form-control" th:field="*{email}" placeholder="Email" >
                             </div>
+                            <div th:if="${#fields.hasErrors('email')}"
+							style="margin-bottom: 25px" class="text-danger">
+                                <ul>
+                                   <li th:each="err : ${#fields.errors('email')}" th:text="${err}" />
+                                </ul>
+						    </div>
     
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">

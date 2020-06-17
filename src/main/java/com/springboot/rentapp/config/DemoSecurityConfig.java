@@ -17,7 +17,6 @@ import com.springboot.rentapp.storage.StorageProperties;
 @EnableWebSecurity
 public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	// add a reference to our security data source
     @Autowired
     private UserService userService;
 	
@@ -33,14 +32,10 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-		    .antMatchers("/").permitAll()// it will allow public access to index.html
-		    .antMatchers("/catalog/**").permitAll()
-			.antMatchers("/cars").hasRole("EMPLOYEE")
-//			.antMatchers("/leaders/**").hasRole("MANAGER")
-//			.antMatchers("/systems/**").hasRole("ADMIN")
+		    .antMatchers("/").permitAll()
 			.and()
 			.formLogin()
-				.loginPage("/showMyLoginPage")
+				.loginPage("/administration")
 				.loginProcessingUrl("/authenticateTheUser")
 				.successHandler(customAuthenticationSuccessHandler)
 				.permitAll()
@@ -52,7 +47,7 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 	}
 	
-	//beans
+	
 	//bcrypt bean definition
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {

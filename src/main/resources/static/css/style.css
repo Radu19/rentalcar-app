@@ -383,3 +383,6 @@ hr.light-100{
   color: #ecebeb;
 }
 
+.media-heading a:active, a:visited{
+  color: #222;
+}

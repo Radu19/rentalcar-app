@@ -37,16 +37,16 @@
 		</ul>
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img th:src="@{./img/background01.png}">
+				<img th:src="@{./img/bg1.jpg}">
 				<div class="carousel-caption">
-					<h1 class="display-2">RENTALCAR</h1>
-					<h3>Best Rent a Car Service</h3>
+					<h1 class="display-2">WELCOME</h1>
+					<h3>The future is now</h3>
 					<button type="button" class="btn btn-outline-light btn-lg">VIEW CARS</button>
 					<button type="button" class="btn btn-primary btn-lg">Contact Us</button>
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img th:src="@{./img/background1.png}">
+				<img th:src="@{./img/bg2.jpg}">
 			</div>
 		</div>
 	</div>
@@ -120,7 +120,7 @@
 						<h4 class="card-title">[[${car.brand}]] [[${car.model}]]</h4>
 						<p class="card-text">[[${car.features}]]</p>
 						<span class="badge badge-danger float-right">From [[${car.price5}]]&nbsp;€</span>
-						<a th:href="@{#}" class="btn btn-outline-secondary">View</a>
+						<a th:href="@{/catalog/view(carId=${car.id})}" class="btn btn-outline-secondary">View</a>
 					</div>
 				</div>
 			</div>
@@ -171,19 +171,19 @@
 	<div class="container padding">
 		<div class="row text-center padding">
 			<div class="col-xs-12 col-sm-6 col-md-4">
-				<img class="padding" th:src="@{./img/volkswagen.png}" alt="volkswagen">
-				<h3>VOLKSWAGEN</h3>
-				<p>The Volkswagen Group was the world's leading vehicle manufacturing company.</p>
+				<img class="padding" th:src="@{./img/partners/tesla.png}" alt="Tesla">
+				<h3>TESLA</h3>
+				<p>Tesla’s mission is to accelerate the world’s transition to sustainable energy</p>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4">
-				<img class="padding" th:src="@{./img/fiat.png}" alt="fiat">
-				<h3>FIAT</h3>
-				<p>Fiat is a leader in the European market known for their revolutionary approach.</p>
+				<img class="padding" th:src="@{./img/partners/nissan.png}" alt="Nissan">
+				<h3>NISSAN</h3>
+				<p>Nissan’s pioneering range of 100% electric cars and vans offer top class performance and cutting edge technology</p>
 			</div>
 			<div class="col-sm-12 col-md-4">
-				<img class="padding" th:src="@{./img/volvo.png}" alt="volvo">
-				<h3>VOLVO</h3>
-				<p>The Volvo Group is the world's best known car manufacturer when it comes to safety.</p>
+				<img class="padding" th:src="@{./img/partners/renault.png}" alt="Renault">
+				<h3>RENAULT</h3>
+				<p>Renault is a leader in the European market known for their revolutionary approach</p>
 			</div>
 		</div>
 	</div>

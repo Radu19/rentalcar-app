@@ -36,7 +36,7 @@ public class MainController {
 		return "index";
 	}
 
-	@GetMapping("/cars")
+	@GetMapping("/dashboard")
 	public String showHome() {
 		return "home";
 	}

@@ -44,8 +44,6 @@
 					<th>Body Type</th>
 					<th>Production Year</th>
 					<th>Color</th>
-					<th>Transmission</th>
-					<th>Fuel</th>
 					<th>Price</th>
 					<th>Status</th>
 					<th>Action</th>
@@ -60,8 +58,6 @@
 					<td th:text="${tempCar.carBody}" />
 					<td th:text="${tempCar.productionYear}" />
 					<td th:text="${tempCar.color}" />
-					<td th:text="${tempCar.transmission}" />
-					<td th:text="${tempCar.fuel}" />
 					<td th:text="${tempCar.price1}" />
 					<td th:text="${tempCar.status}" />
 
@@ -93,7 +89,7 @@
 
 		<div class="row">
 			<div>
-				<form action="#" th:action="@{/cars}" method="GET">
+				<form action="#" th:action="@{/dashboard}" method="GET">
 					<input type="submit" value="Homepage" class="btn btn-outline-primary mt-2" style="margin-right:15px;" />
 				</form>
 			</div>

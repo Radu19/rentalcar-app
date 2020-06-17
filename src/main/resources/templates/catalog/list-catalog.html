@@ -29,14 +29,14 @@
         <div class="col-md-12 border border-dark bg-light text-dark rounded">
           <div class="row">
             <div class="col-xs-12 col-md-5">
-              <a href="#" class="float-left" target="_parent">
+              <a th:href="@{/catalog/view(carId=${car.id})}" class="float-left" target="_parent">
                 <img th:src="@{./img/cars/{image}(image=${car.img})}" th:title="${car.brand}" th:alt="${car.brand}" style="width:100%; min-width:200px" class="img-thumbnail">
               </a>
             </div>
             <div class="col-xs-12 col-md-7">
               <div class="visible-sm visible-xs"><br></div>
               <h4 class="media-heading">
-                <a href="#" target="_parent">[[${car.brand}]] [[${car.model}]]</a>
+                <a th:href="@{/catalog/view(carId=${car.id})}" target="_parent">[[${car.brand}]] [[${car.model}]]</a>
                 <small class="float-right">
                   <span class="badge badge-danger" title="sports utility">Segment &nbsp; "[[${car.segment}]]"</span>
                 </small>
@@ -47,25 +47,26 @@
                     <td style="width: 20%;">
                       <img th:src="@{img/icons/passenger.png}" alt="Passengers" title="Passengers">
                       <br>[[${car.nrOfSeats}]]
-                    </td>
-                    <td style="width: 20%;">
+                  </td>
+                  <td style="width: 20%;">
                       <img th:src="@{img/icons/luggage.png}" alt="Luggage" title="Luggage">
                       <br>[[${car.luggage}]]
-                    </td>
-                    <td style="width: 20%;">
-                      <img th:src="@{img/icons/transmission.png}" alt="Transmission" title="Transmission">
+                  </td>
+                  <td style="width: 20%;">
+                      <img th:src="@{img/icons/station.png}" alt="Farst charge time" title="Farst charge time">
                       <br>
-                      <small>[[${car.transmission}]]</small>
-                    </td>
-                    <td style="width: 20%;">
-                      <img th:src="@{img/icons/fuel.png}" alt="Fuel" title="Fuel">
+                      <small>[[${car.fastCharge}]] h</small>
+                  </td>
+                  <td style="width: 20%;">
+                      <img th:src="@{img/icons/road.png}" alt="Range" title="Range">
                       <br>
-                      <small>[[${car.fuel}]]</small>
-                    </td>
-                    <td style="width: 20%;">
-                      <img th:src="@{img/icons/motor.png}" alt="Engine" title="Engine">
-                      <br>[[${car.engine}]]
-                    </td>
+                      <small>[[${car.maxDistance}]] km</small>
+                  </td>
+                  <td style="width: 20%;">
+                      <img th:src="@{img/icons/motor.png}" alt="Power" title="Power">
+                      <br>
+                      <small>[[${car.horsepower}]] hp</small>
+                  </td>
                   </tr>
                 </tbody>
               </table>

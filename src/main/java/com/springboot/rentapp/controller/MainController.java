@@ -38,7 +38,7 @@ public class MainController {
 
 	@GetMapping("/dashboard")
 	public String showHome() {
-		return "home";
+		return "dashboard";
 	}
 
 }

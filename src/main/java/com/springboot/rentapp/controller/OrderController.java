@@ -46,7 +46,6 @@ public class OrderController {
 	@PostMapping("/start")
 	public String reservation(@Valid @ModelAttribute("customer") Customer theCustomer, BindingResult theBindingResult, @RequestParam("carId") int carId ,RedirectAttributes redirectAttributes) {
 		System.out.println("\nPostMapping /start <><><> \n");
-		
 		if(theBindingResult.hasErrors()) {
 			System.out.println("Errors>>>>>" + theBindingResult);
 			redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.customer", theBindingResult);
@@ -61,10 +60,8 @@ public class OrderController {
 		}else {
 			customerService.save(theCustomer);
 		}
-		
 		redirectAttributes.addFlashAttribute("customerId", theCustomer.getId());
 		redirectAttributes.addFlashAttribute("carId", carId);
-		
 		System.out.println("CarId" + carId);
 		return "redirect:/order/form";
 	}
@@ -72,18 +69,14 @@ public class OrderController {
 	@GetMapping("/form")
 	public String reservation(Model theModel) {
 		System.out.println("\nGetMapping /form <><><> \n");
-		
 		int customerId = (int) theModel.asMap().get("customerId");
 		int carId = (int) theModel.asMap().get("carId");
 		System.out.println("CarId" + carId + "\nCustomerId"+ customerId);
-		
 		Car theCar = carService.findById(carId);
 		Customer theCustomer = customerService.findById(customerId);
-		
 		LocalDateTime orderDateLocal = LocalDateTime.now();
 		LocalDateTime startDateLocal = LocalDateTime.now().plusDays(1);
 		LocalDateTime endDateLocal = LocalDateTime.now().plusDays(3);
-		
 		Order theOrder = null;
 		try {
 			theOrder = new Order();
@@ -99,21 +92,17 @@ public class OrderController {
 		theModel.addAttribute("order", theOrder);
 		theModel.addAttribute("car", theCar);
 		theModel.addAttribute("customer", theCustomer);
-		
 		return "/order/order-form";
 	}
 	
 	@PostMapping("/complete")
 	public String reservationComplete(@ModelAttribute("order") Order theOrder, RedirectAttributes redirectAttributes) {
 		System.out.println("\nPostMapping /complete <><><> \n");
-		
 		User theUser = userService.findById(adminId);
-		
 		LocalDateTime startDate = theOrder.getStartDate();
 		LocalDateTime endDate = theOrder.getEndDate();
 		int days = (int) ChronoUnit.DAYS.between(startDate, endDate);
 		theOrder.setHireDays(days);
-		
 		Car theCar = null;
 		try {
 			theCar = theOrder.getCar();
@@ -121,27 +110,20 @@ public class OrderController {
 			e.printStackTrace();
 		}
 		double totalCost = days*determinePrice(days, theCar);
-		
 		if(theOrder.getCasco()!=false) {
 			totalCost+=days*theCar.getCasco();
 		}
-		
 		theOrder.setTotalCost(totalCost);
 		theOrder.setUser(theUser);
 		theOrder.setPaymentStatus("Pending");
 		theOrder.setStatus("In Process");
-		
 		orderService.save(theOrder);
-		
 		redirectAttributes.addFlashAttribute("order", theOrder);
-		
-		
 		return "redirect:/order/complete";
 	}
 	
 	@GetMapping("/complete")
 	public String reservationComplete(Model theModel) {
-		
 		Order theOrder = (Order) theModel.asMap().get("order");
 		Car theCar = null;
 		try {

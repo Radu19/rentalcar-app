@@ -23,69 +23,46 @@ public class CarController {
 	
 	@GetMapping("/list")
 	public String listCars(Model theModel) {
-		
-		//get cars fro db
 		List<Car> theCars = carService.findAll();
-		
-		//add to the spring model
 		theModel.addAttribute("cars", theCars);
-		
 		return "/cars/list-cars";
 	}
 	
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model theModel) {
 		String img = (String) theModel.asMap().get("carName");
-		
-		//create model attribute to bind form data
 		Car theCar = new Car();
-		
 		if(img!=null) {
 			theCar.setImg(img);
 		}
-		
 		theModel.addAttribute("car", theCar);
-		
 		return "/cars/car-form";
 	}
 	
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("carId") int theId, 
 			Model theModel) {
-		
-		//get the car from the service
 		Car theCar = carService.findById(theId);
-		
-		//set car as a model attribute to pre-populate the form
 		theModel.addAttribute("car", theCar);
-		
 		return "/cars/car-form";
 	}
 	
 	@PostMapping("/save")
 	public String saveCar(@ModelAttribute("car") Car theCar) {
-		
 		carService.save(theCar);
-		
 		return "redirect:/cars/list";
 	}
 	
 	@GetMapping("/delete")
 	public String delete(@RequestParam("carId") int theId) {
-		
 		carService.deleteById(theId);
-		
 		return "redirect:/cars/list";
 	}
 	
 	@GetMapping("/search")
-	public String search(@RequestParam("carBrand") String theBrand, 
-			Model theModel) {
-		
+	public String search(@RequestParam("carBrand") String theBrand, Model theModel) {
 		List<Car> theCars = carService.searchBy(theBrand);
-		
 		theModel.addAttribute("cars", theCars);
-		
 		return "/cars/list-cars";
 	}
 	

@@ -22,17 +22,13 @@ public class MainController {
 
 	@GetMapping("/")
 	public String showIndex(Model theModel) {
-
 		List<Car> list = carService.findAll();
 		List<Car> myList = new ArrayList<>();
-		
 		Collections.shuffle(list);
 		for(int i = 1; i < 4; i++){
 			myList.add(list.get(i));
 		}
-
 		theModel.addAttribute("cars", myList);
-
 		return "index";
 	}
 

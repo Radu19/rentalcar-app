@@ -22,17 +22,13 @@ public class EmployeeController {
 	@GetMapping("/list")
 	public String listEmployees(Model theModel) {
 		List<User> theUsers = userService.findAll();
-		
 		theModel.addAttribute("employees", theUsers);
-		
 		return "/employees/list-employees";
 	}
 	
 	@GetMapping("/delete")
 	public String delete(@RequestParam("employeeId") Long theId) {
-		
 		userService.deleteById(theId);
-				
 		return "redirect:/employees/list";
 	}
 }

@@ -8,10 +8,8 @@ import com.springboot.rentapp.entity.Car;
 
 public interface CarRepository extends JpaRepository<Car, Integer>{
 
-	    // add a method to sort by last name
 		public List<Car> findAllByOrderByBrand();
-		
-		// search by name
+
 		public List<Car> findByBrandContainsOrModelContainsAllIgnoreCase(String brand, String model);
 
 }

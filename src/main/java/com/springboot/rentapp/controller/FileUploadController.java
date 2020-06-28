@@ -36,7 +36,6 @@ public class FileUploadController {
 	@GetMapping("/files/{filename:.+}")
 	@ResponseBody
 	public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-
 		Resource file = storageService.loadAsResource(filename);
 		return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
 				"attachment; filename=\"" + file.getFilename() + "\"").body(file);
@@ -45,14 +44,11 @@ public class FileUploadController {
 	@PostMapping("/image")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
 			RedirectAttributes redirectAttributes) throws IOException {
-
 		storageService.store(file);
 		redirectAttributes.addFlashAttribute("carName", file.getOriginalFilename());
-
 		String directoryString = "src/main/resources/static/img/docs";
 		File theFile = new File(directoryString, file.getOriginalFilename());
 		FileUtils.writeByteArrayToFile(theFile, file.getBytes());
-		
 		return "redirect:/cars/showFormForAdd";
 	}
 	

@@ -23,9 +23,7 @@ public class CarServiceImpl implements CarService {
 	@Override
 	public Car findById(int theId) {
 		Optional<Car> result = carRepository.findById(theId);
-		
 		Car theCar = null;
-		
 		if(result.isPresent()) {
 			theCar = result.get();
 		}
@@ -48,7 +46,6 @@ public class CarServiceImpl implements CarService {
 	@Override
 	public List<Car> searchBy(String theBrand) {
 		List<Car> results = null;
-		
 		if(theBrand != null && (theBrand.trim().length()>0)) {
 			results = carRepository.findByBrandContainsOrModelContainsAllIgnoreCase(theBrand, theBrand);
 		}

@@ -10,7 +10,7 @@ public interface CustomerService {
 	
 	public Customer findById(int theId);
 	
-	public Customer findByPhoneNr(int phoneNr);
+	public Customer findByEmail(String email);
 	
 	public void save(Customer theCustomer);
 	

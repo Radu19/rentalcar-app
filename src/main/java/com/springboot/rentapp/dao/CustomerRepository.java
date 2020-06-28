@@ -7,6 +7,6 @@ import com.springboot.rentapp.entity.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
-	@Query(value = "SELECT * FROM Customer c WHERE c.phone_nr = ?1", nativeQuery = true)
-	public Customer findByPhoneNr(int phoneNr);
+	@Query(value = "SELECT * FROM Customer c WHERE c.email = ?1", nativeQuery = true)
+	public Customer findByEmail(String email);
 }

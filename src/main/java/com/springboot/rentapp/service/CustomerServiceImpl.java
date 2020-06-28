@@ -22,16 +22,13 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public Customer findById(int theId) {
-
 		Optional<Customer> result = customerRepository.findById(theId);
-
 		Customer theCustomer = null;
 		if (result.isPresent()) {
 			theCustomer = result.get();
 		} else {
 			throw new RuntimeException("Did not find customer id - " + theId);
 		}
-
 		return theCustomer;
 	}
 
@@ -46,17 +43,14 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Customer findByPhoneNr(int phoneNr) {
-		
-		Optional<Customer> result = Optional.ofNullable(customerRepository.findByPhoneNr(phoneNr));
+	public Customer findByEmail(String email) {
+		Optional<Customer> result = Optional.ofNullable(customerRepository.findByEmail(email));
 		Customer theCustomer = null;
 		if(result.isPresent()) {
 			theCustomer = result.get();
 		}else {
 			System.out.println("Didn't find this number.");
-			theCustomer = null;
 		}
-		
 		return theCustomer;
 	}
 

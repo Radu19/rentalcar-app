@@ -22,9 +22,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Order findById(int theId) {
-
 		Optional<Order> result = orderRepository.findById(theId);
-		
 		Order theOrder = null;
 		if (result.isPresent()) {
 			theOrder = result.get();

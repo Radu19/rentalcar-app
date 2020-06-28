@@ -52,9 +52,8 @@ public class OrderController {
 			redirectAttributes.addFlashAttribute("customer", theCustomer);
 			return "redirect:/catalog/view?carId="+carId;
 		}
-		
-		int phoneNr = theCustomer.getPhoneNr();
-		Customer extractCustomer = customerService.findByPhoneNr(phoneNr);
+		String email = theCustomer.getEmail();
+		Customer extractCustomer = customerService.findByEmail(email);
 		if(extractCustomer!=null) {
 			theCustomer = extractCustomer;
 		}else {
@@ -110,7 +109,8 @@ public class OrderController {
 			e.printStackTrace();
 		}
 		double totalCost = days*determinePrice(days, theCar);
-		if(theOrder.getCasco()!=false) {
+		if(theOrder.getCasco()) {
+			assert theCar != null;
 			totalCost+=days*theCar.getCasco();
 		}
 		theOrder.setTotalCost(totalCost);

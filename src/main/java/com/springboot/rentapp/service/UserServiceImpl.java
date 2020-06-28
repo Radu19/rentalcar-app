@@ -53,8 +53,6 @@ public class UserServiceImpl implements UserService {
 
 		// give user default role of "employee"
 		user.setRoles(Arrays.asList(roleDao.findRoleByName("ROLE_EMPLOYEE")));
-
-		 // save user in the database
 		userDao.save(user);
 	}
 
@@ -85,7 +83,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User findById(Long id) {
-		
 		Optional<User> result = Optional.ofNullable(userDao.findById(id));
 		User theUser = null;
 		if(result.isPresent()) {

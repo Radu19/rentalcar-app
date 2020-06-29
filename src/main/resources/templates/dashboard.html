@@ -36,14 +36,6 @@
 		</table>
 	</div>
 
-	<!--Example of authorized access
-	 <div sec:authorize="hasRole('ROLE_MANAGER')">
-		<p>
-			<a th:href="@{/leaders}">Leadership Meeting</a>
-			(Only for Manager peeps)
-		</p>
-	</div> -->
-
 	<hr>
 
 	<section class="feature-area section-gap" id="service">
@@ -61,6 +53,38 @@
 					</div>
 				</div>
 			</div>
+			<div class="panel panel-primary">
+				<div class="panel-body row">
+					<div class="col-md-3">
+						<div class="well dash-box">
+							<h2><i class="fas fa-car"></i> [[${nrCars}]]</h2>
+							<h6>Cars</h6>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="well dash-box">
+							<h2><i class="fas fa-comments"></i> [[${nrContacts}]]</h2>
+							<h6>Messages</h6>
+						</div>
+					</div>
+		
+					<div class="col-md-3">
+						<div class="well dash-box">
+							<h2><i class="fas fa-chart-line"></i> [[${nrOrders}]]</h2>
+							<h6>Orders</h6>
+						</div>
+					</div>
+		
+					<div class="col-md-3">
+						<div class="well dash-box">
+							<h2><i class="fas fa-user"></i> [[${nrCustomers}]]</h2>
+							<h6>Customers</h6>
+						</div>
+					</div>
+		
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-lg-6 col-md-6 feature">
 					<a th:href="@{/cars/list}">
@@ -73,22 +97,36 @@
 					</a>
 				</div>
 				<div class="col-lg- col-md-6 feature">
-					<div class="single-feature">
-						<h4><i class="fas fa-chart-line"></i> &nbsp;Order List</h4>
-						<p>
-							The orders should be processed as swift as possible.
-						</p>								
-					</div>
+					<a th:href="@{/order/list}">
+						<div class="single-feature">
+							<h4><i class="fas fa-chart-line"></i> &nbsp;Order List</h4>
+							<p>
+								The orders should be processed as swift as possible.
+							</p>								
+						</div>
+					</a>
 				</div> 
 				<div class="col-lg-6 col-md-6 feature">
-					<div class="single-feature">
-						<h4><i class="fas fa-comments"></i> &nbsp;Messages from clients</h4>
-						<p>
-							Every client is our friend and our critic, respect it.
-						</p>								
-					</div>
+					<a th:href="@{/contact/list}">
+						<div class="single-feature">
+							<h4><i class="fas fa-comments"></i> &nbsp;Messages from clients</h4>
+							<p>
+								Every client is our friend and our critic, respect it.
+							</p>								
+						</div>
+					</a>
 				</div>
 				<div class="col-lg-6 col-md-6 feature">
+					<a th:href="@{/customer/list}">
+						<div class="single-feature">
+							<h4><i class="far fa-user"></i> &nbsp;Customers</h4>
+							<p>
+								The list of all the customers of the company.
+							</p>				
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-12 col-md-12 feature" sec:authorize="hasRole('ROLE_ADMIN')">
 					<a th:href="@{/employees/list}">
 						<div class="single-feature">
 							<h4><i class="far fa-user"></i> &nbsp;Employees</h4>
@@ -101,39 +139,6 @@
 			</div>
 		</div>	
 	</section>
-
-	<div class="panel panel-primary">
-		<div class="panel-body row">
-			<div class="col-md-3">
-				<div class="well dash-box">
-					<h2><i class="fas fa-car"></i> 12</h2>
-					<h6>Cars</h6>
-				</div>
-			</div>
-
-			<div class="col-md-3">
-				<div class="well dash-box">
-					<h2><i class="fas fa-chart-line"></i> 12</h2>
-					<h6>Orders</h6>
-				</div>
-			</div>
-
-			<div class="col-md-3">
-				<div class="well dash-box">
-					<h2><i class="fas fa-comments"></i> 12</h2>
-					<h6>Messages</h6>
-				</div>
-			</div>
-
-			<div class="col-md-3">
-				<div class="well dash-box">
-					<h2><i class="fas fa-user"></i> 12</h2>
-					<h6>Employees</h6>
-				</div>
-			</div>
-
-		</div>
-	</div>
 
 	<!-- Add a logout button -->
 	<form action="#" th:action="@{/logout}" method="POST">

@@ -2,6 +2,7 @@ package com.springboot.rentapp.controller;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -42,6 +43,19 @@ public class OrderController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+	@GetMapping("/list")
+	public String showOrdersList(Model theModel) {
+		List<Order> orders = orderService.findAll();
+		theModel.addAttribute("orders", orders);
+		return "/order/order-list";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteOrder(@RequestParam("orderId") int orderId) {
+		orderService.deleteById(orderId);
+		return "redirect:/order/list";
+	}
 
 	@PostMapping("/start")
 	public String reservation(@Valid @ModelAttribute("customer") Customer theCustomer, BindingResult theBindingResult, @RequestParam("carId") int carId ,RedirectAttributes redirectAttributes) {

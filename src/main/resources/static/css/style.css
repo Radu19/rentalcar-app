@@ -386,3 +386,11 @@ hr.light-100{
 .media-heading a:active, a:visited{
   color: #222;
 }
+
+.carouse-caption a:active, a:visited{
+  color: #ecebeb;
+}
+
+.active-link a:active, a:visited{
+  color:  #222;
+}

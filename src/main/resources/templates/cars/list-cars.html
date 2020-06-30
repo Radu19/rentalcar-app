@@ -31,7 +31,7 @@
 
 		<div class="container" style="margin-bottom: 2.2rem;">
 			<div class="row">
-				<a th:href="@{/cars/showFormForAdd}" class="btn btn-primary" style="margin-right: 3rem;">Add Car</a>
+				<a th:href="@{/cars/add}" class="btn btn-primary" style="margin-right: 3rem;">Add Car</a>
 				<input class="form-control col-4" type="search" id="myInput" name="carBrand" placeholder="Search..." />
 			</div>
 		</div>
@@ -62,10 +62,10 @@
 					<td th:text="${tempCar.status}" />
 
 					<td text-align="center">
-						<div class="btn-group" >
+						<div class="btn-group text-center" >
 							<div sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')">
 								<!-- Add "update" button/link -->
-								<a th:href="@{/cars/showFormForUpdate(carId=${tempCar.id})}" class="btn btn-info btn-sm">
+								<a th:href="@{/cars/update(carId=${tempCar.id})}" class="btn btn-info btn-sm">
 									Update
 								</a>
 							</div>

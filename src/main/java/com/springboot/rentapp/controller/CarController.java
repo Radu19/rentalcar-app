@@ -28,7 +28,7 @@ public class CarController {
 		return "/cars/list-cars";
 	}
 	
-	@GetMapping("/showFormForAdd")
+	@GetMapping("/add")
 	public String showFormForAdd(Model theModel) {
 		String img = (String) theModel.asMap().get("carName");
 		Car theCar = new Car();
@@ -39,7 +39,7 @@ public class CarController {
 		return "/cars/car-form";
 	}
 	
-	@GetMapping("/showFormForUpdate")
+	@GetMapping("/update")
 	public String showFormForUpdate(@RequestParam("carId") int theId, 
 			Model theModel) {
 		Car theCar = carService.findById(theId);
@@ -65,11 +65,6 @@ public class CarController {
 		theModel.addAttribute("cars", theCars);
 		return "/cars/list-cars";
 	}
-	
-	
-	
-	
-	
 	
 	
 }

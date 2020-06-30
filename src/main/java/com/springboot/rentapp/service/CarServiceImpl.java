@@ -1,5 +1,6 @@
 package com.springboot.rentapp.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,6 +54,11 @@ public class CarServiceImpl implements CarService {
 			results = findAll();
 		}
 		return results;
+	}
+
+	@Override
+	public List<Car> findAvailableCars(LocalDateTime startDate, LocalDateTime endDate) {
+		return carRepository.findAvailableCars(startDate, endDate);
 	}
 
 }

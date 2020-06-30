@@ -61,15 +61,17 @@
 			</div>
 			<hr>
 		</div>
-		<div class="container padding" style="width:350px">
-			<div class="input-group" style="margin-bottom: 25px">
-				<input type="text" id="datepicker1" class="form-control" placeholder="Start Date">
+		<form th:action="@{/catalog/available-cars}" method="GET">
+			<div class="container padding" style="width:350px">
+				<div class="input-group" style="margin-bottom: 25px">
+					<input type="text" name="startDate" id="datepicker1" th:value="${#temporals.format(startDate, 'dd-MM-yyyy HH:mm')}" class="form-control" placeholder="Start Date" autocomplete="off" />
+				</div>
+				<div class="input-group" style="margin-bottom: 25px">
+					<input type="text" name="endDate" id="datepicker2" th:value="${#temporals.format(endDate, 'dd-MM-yyyy HH:mm')}" class="form-control" placeholder="End Date" autocomplete="off" />
+				</div>
+				<button type="submit" class="btn btn-primary btn-lg">Find Car</button>
 			</div>
-			<div class="input-group" style="margin-bottom: 25px">
-				<input type="text" id="datepicker2" class="form-control" placeholder="End Date">
-			</div>
-			<button type="button" class="btn btn-primary btn-lg">Find Car</button>
-		</div>
+		</form>
 		<hr>
 	</div>
 	
@@ -213,9 +215,9 @@
 
 <script>
 	$('#datepicker1').datetimepicker({
-		timepicker: false,
+		timepicker: true,
 		datepicker: true,
-		format: 'd-m-y',
+		format: 'd-m-Y H:i',
 		onShow: function (ct) {
 			this.setOptions({
 				maxDate: $('#datepicker2').val() ? $('#datepicker2') : false
@@ -223,9 +225,9 @@
 		}
 	})
 	$('#datepicker2').datetimepicker({
-		timepicker: false,
+		timepicker: true,
 		datepicker: true,
-		format: 'd-m-y',
+		format: 'd-m-Y H:i',
 		onShow: function (ct) {
 			this.setOptions({
 				minDate: $('#datepicker1').val() ? $('#datepicker1') : false

@@ -1,9 +1,11 @@
 package com.springboot.rentapp.controller;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,7 +44,13 @@ public class CatalogController {
 		return "/catalog/car-view";
 	}
 	
-	
+	@GetMapping("/available-cars")
+	public String showAvailableCars(@RequestParam("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm") LocalDateTime startDate,
+			@RequestParam("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm") LocalDateTime endDate, Model theModel) {
+		List<Car> cars = carService.findAvailableCars(startDate, endDate);
+		theModel.addAttribute("cars", cars);
+		return "/catalog/list-catalog";
+	}
 	
 	
 }

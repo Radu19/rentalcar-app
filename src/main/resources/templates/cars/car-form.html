@@ -26,7 +26,7 @@
 
     <form method="POST" enctype="multipart/form-data" th:action="@{/upload/image}">
       <input type="file" class="form-control-file" name="file" />
-      <input type="submit" value="Upload" class="btn-primary" />
+      <input type="submit" value="Upload" class="btn btn-primary" />
     </form>
 
     <form th:action="@{/cars/save}" th:object="${car}" method="POST">

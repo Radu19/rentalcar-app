@@ -1,5 +1,6 @@
 package com.springboot.rentapp.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -42,6 +43,11 @@ public class MainController {
 			myList.add(list.get(i));
 		}
 		theModel.addAttribute("cars", myList);
+		
+		LocalDateTime startDate = LocalDateTime.now();
+		LocalDateTime endDate = LocalDateTime.now().plusDays(5);
+		theModel.addAttribute("startDate", startDate);
+		theModel.addAttribute("endDate", endDate);
 		return "index";
 	}
 

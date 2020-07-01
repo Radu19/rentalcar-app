@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,20 +30,27 @@ public class Customer {
 	@Column(name="id")
 	private int id;
 	
+	@NotNull(message = "First name is required")
+	@Size(min = 1, message = "First name is required")
 	@Column(name="first_name")
 	private String firstName;
 	
+	@NotNull(message = "Last name is required")
+	@Size(min = 1, message = "Last name is required")
 	@Column(name="last_name")
 	private String lastName;
 	
 	@ValidEmail
-	@NotNull(message = "This field is required")
-	@Size(min = 1, message = "This field is required")
+	@NotNull(message = "Email is required")
+	@Size(min = 1, message = "Email is required")
 	@Column(name="email")
 	private String email;
 	
+	@Pattern(regexp="^(\\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\\s|\\.|\\-)?([0-9]{3}(\\s|\\.|\\-|)){2}$", 
+			message="Invalid phone number")
+	@NotNull(message="Phone number is required")
 	@Column(name="phone_nr")
-	private int phoneNr;
+	private String phoneNr;
 	
 	@Column(name="address")
 	private String address;
@@ -58,7 +66,7 @@ public class Customer {
 	
 	public Customer() {}
 	
-	public Customer(String firstName, String lastName, String email, int phoneNr, String address,
+	public Customer(String firstName, String lastName, String email, String phoneNr, String address,
 			LocalDate dateBirth, List<Order> orders) {
 		super();
 		this.firstName = firstName;
@@ -70,7 +78,7 @@ public class Customer {
 		this.orders = orders;
 	}
 
-	public Customer(String firstName, String lastName, String email, int phoneNr, String address,
+	public Customer(String firstName, String lastName, String email, String phoneNr, String address,
 			LocalDate dateBirth) {
 		super();
 		this.firstName = firstName;
@@ -123,11 +131,11 @@ public class Customer {
 		this.email = email;
 	}
 
-	public int getPhoneNr() {
+	public String getPhoneNr() {
 		return phoneNr;
 	}
 
-	public void setPhoneNr(int phoneNr) {
+	public void setPhoneNr(String phoneNr) {
 		this.phoneNr = phoneNr;
 	}
 

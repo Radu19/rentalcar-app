@@ -2,9 +2,12 @@ package com.springboot.rentapp.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,12 +27,20 @@ public class ContactController {
 
     @GetMapping("/form")
     public String showContactPage(Model theModel){
-        theModel.addAttribute("contact", new Contact());
+    	if(!theModel.containsAttribute("contact")) {
+			Contact theContact = new Contact();
+			theModel.addAttribute("contact", theContact);
+		}
         return "/contacts/contact-page";
     }
 
     @PostMapping("/process-request")
-    public String processRequest(@ModelAttribute("contact") Contact theContact, RedirectAttributes attributes){
+    public String processRequest(@Valid @ModelAttribute("contact") Contact theContact, BindingResult theBindingResult, RedirectAttributes attributes){
+    	if(theBindingResult.hasErrors()) {
+			attributes.addFlashAttribute("org.springframework.validation.BindingResult.contact", theBindingResult);
+			attributes.addFlashAttribute("contact", theContact);
+			return "redirect:/contact/form";
+		}
         contactService.save(theContact);
         attributes.addFlashAttribute("message", "Thank you for your message!");
         return "redirect:/contact/form";

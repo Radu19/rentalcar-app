@@ -162,12 +162,22 @@
                         </div>
                         <div class="container-fluid">
                             <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                </div>
-                                <input type="text" class="form-control" th:field="*{firstName}" placeholder="First Name">
-                                <input type="text" class="form-control" th:field="*{lastName}" placeholder="Last Name">
-                              </div>
+                                    <div class="input-group-prepend">
+                                         <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" th:field="*{firstName}" placeholder="First Name">
+                                    <input type="text" class="form-control" th:field="*{lastName}" placeholder="Last Name">
+                            </div>
+                            <div th:if="${#fields.hasErrors('firstName')}" class="text-danger mb-2">
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('firstName')}" th:text="${err}" />
+                                </ul>
+                            </div>
+                            <div th:if="${#fields.hasErrors('lastName')}" class="text-danger mb-2">
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('lastName')}" th:text="${err}" />
+                                </ul>
+                            </div>
     
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -175,8 +185,7 @@
                                 </div>
                                 <input type="text" class="form-control" th:field="*{email}" placeholder="Email" >
                             </div>
-                            <div th:if="${#fields.hasErrors('email')}"
-							style="margin-bottom: 25px" class="text-danger">
+                            <div th:if="${#fields.hasErrors('email')}" class="text-danger mb-2">
                                 <ul>
                                    <li th:each="err : ${#fields.errors('email')}" th:text="${err}" />
                                 </ul>
@@ -188,12 +197,19 @@
                                 </div>
                                 <input type="text" class="form-control" th:field="*{address}" placeholder="Address" >
                             </div>
+
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                 </div>
                                 <input type="text" class="form-control" th:field="*{phoneNr}" placeholder="Phone" >
                             </div>
+                            <div th:if="${#fields.hasErrors('phoneNr')}" class="text-danger mb-2">
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('phoneNr')}" th:text="${err}" />
+                                </ul>
+                            </div>
+
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="fas fa-calendar"></i></span>

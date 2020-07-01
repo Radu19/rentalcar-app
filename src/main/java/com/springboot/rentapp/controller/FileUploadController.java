@@ -46,10 +46,10 @@ public class FileUploadController {
 			RedirectAttributes redirectAttributes) throws IOException {
 		storageService.store(file);
 		redirectAttributes.addFlashAttribute("carName", file.getOriginalFilename());
-		String directoryString = "src/main/resources/static/img/docs";
+		String directoryString = "src/main/resources/static/img/cars";
 		File theFile = new File(directoryString, file.getOriginalFilename());
 		FileUtils.writeByteArrayToFile(theFile, file.getBytes());
-		return "redirect:/cars/showFormForAdd";
+		return "redirect:/cars/add";
 	}
 	
 

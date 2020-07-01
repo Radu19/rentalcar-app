@@ -61,7 +61,6 @@ public class OrderController {
 	public String reservation(@Valid @ModelAttribute("customer") Customer theCustomer, BindingResult theBindingResult, @RequestParam("carId") int carId ,RedirectAttributes redirectAttributes) {
 		System.out.println("\nPostMapping /start <><><> \n");
 		if(theBindingResult.hasErrors()) {
-			System.out.println("Errors>>>>>" + theBindingResult);
 			redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.customer", theBindingResult);
 			redirectAttributes.addFlashAttribute("customer", theCustomer);
 			return "redirect:/catalog/view?carId="+carId;

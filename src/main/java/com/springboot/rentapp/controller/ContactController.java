@@ -2,6 +2,7 @@ package com.springboot.rentapp.controller;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,7 @@ public class ContactController {
     	return "/contacts/contacts-list";
     }
     
+    @RolesAllowed("ROLE_ADMIN")
     @GetMapping("/delete")
     public String deleteContact(@RequestParam("contactId") int contactId) {
     	contactService.deleteById(contactId);

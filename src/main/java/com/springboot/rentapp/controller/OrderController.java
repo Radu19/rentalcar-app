@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,7 @@ public class OrderController {
 		return "/order/order-list";
 	}
 	
+	@RolesAllowed("ROLE_ADMIN")
 	@GetMapping("/delete")
 	public String deleteOrder(@RequestParam("orderId") int orderId) {
 		orderService.deleteById(orderId);

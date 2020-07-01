@@ -45,7 +45,6 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 		    .antMatchers("/cars/**").hasRole("EMPLOYEE")
 		    .antMatchers("/cars/delete").hasRole("ADMIN")
 		    .antMatchers("/customer/**").hasRole("EMPLOYEE")
-		    .antMatchers("/customer/delete").hasRole("ADMIN")
 			.and()
 			.formLogin()
 				.loginPage("/administration")

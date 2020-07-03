@@ -28,15 +28,15 @@ CREATE TABLE `car` (
   `id` int NOT NULL AUTO_INCREMENT,
   `brand` varchar(45) NOT NULL,
   `model` varchar(45) NOT NULL,
-  `segment` varchar(45) DEFAULT NULL,
+  `segment` varchar(45) NOT NULL,
   `production_year` int NOT NULL,
   `car_body` varchar(45) NOT NULL,
   `color` varchar(45) NOT NULL,
   `nr_of_doors` int NOT NULL,
   `nr_of_seats` int NOT NULL,
-  `transmission` varchar(45) NOT NULL,
-  `fuel` varchar(45) NOT NULL,
-  `engine` double NOT NULL,
+  `min_distance` int NOT NULL,
+  `max_distance` int NOT NULL,
+  `fast_charge` double NOT NULL,
   `features` longtext NOT NULL,
   `casco` double NOT NULL,
   `luggage` int NOT NULL,
@@ -49,11 +49,12 @@ CREATE TABLE `car` (
   `price5` double NOT NULL,
   `weight` int NOT NULL,
   `traction` varchar(45) NOT NULL,
+  `horsepower` double NOT NULL,
   `minimal_age` int NOT NULL,
   `driving_exp` int NOT NULL,
   `garant` double NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +63,7 @@ CREATE TABLE `car` (
 
 LOCK TABLES `car` WRITE;
 /*!40000 ALTER TABLE `car` DISABLE KEYS */;
-INSERT INTO `car` VALUES (1,'Audi','Q7','J',2017,'Hatchback','Black',5,5,'Manual','Diesel',2.3,'Air conditioning, Cruise Control, MP3/AUX/USB, ABS/TC/ESP, Steering Controls, 8 airbags',12,5,'Available','audi-q7-id1.jpg',78,73,68,63,55,2410,'AWD',25,3,950),(2,'Audi','A8 ','A',2018,'Sedan','Gray',5,5,'Automatic','Petrol',3.5,'Air conditioning, Cruise Control, MP3/AUX/USB, Heating Seats, Steering Controls, 10 airbags',30,4,'Available','audi-a8-id2.jpg',150,145,140,135,125,1945,'RWD',26,4,2500),(3,'BMW','X6 ','J',2015,'Hatchback','Red',5,5,'Manual','Diesel',3.3,'Climat Control, ABS, EBD, AM/FM Radio, MP3 Player/USB, 6 airbags, 2WD, Heated seats',15,4,'Available','bmw-x6-id3.jpg',80,77,73,68,60,2340,'AWD',24,3,900),(4,'Mercedes','S Class','F',2018,'Sedan','Black',5,5,'Automatic','Diesel',3.5,'Climat Control, ABS, EBD, AM/FM Radio, MP3 Player/USB, 12 airbags, 2WD, Heated seats',25,3,'Available','s-class-id4.jpg',90,87,85,80,72,2275,'RWD',26,5,2200),(5,'Jaguar','XF','F',2015,'Sedan','Gray',5,5,'Automatic','Petrol',2.8,'Audio System, Climat Control, ABS, EBD, AM/FM Radio, MP3 Player/USB, 4 airbags, 2WD, Heated seats',15,3,'Not Available','jaguar-xf-id5.jpg',75,73,70,64,55,2400,'FWD',25,3,700),(9,'Porshe','Panamera','A',2015,'Cabriolet','White',5,5,'Automatic','Petrol',3.6,'Apa calda, apa rasi',0,3,'Available','panamera-id6.jpg',0,0,0,0,0,0,'AWD',5,5,0);
+INSERT INTO `car` VALUES (1,'Tesla','Model X','J',2016,'SUV','Gray',5,5,383,490,1.5,'Autopilot, Air conditioning, Cruise Control, MP3/AUX/USB, ABS/TC/ESP, Steering Controls, 8 airbags',12,5,'Available','tesla-model-x.jpg',78,73,68,63,55,2458,'AWD',259,23,3,2100),(2,'Tesla','Model S','A',2012,'Sedan','Gray',5,5,401,628,1,'Autopilot, Air conditioning, Cruise Control, MP3/AUX/USB, Heating Seats, Steering Controls, 10 airbags',30,4,'Available','tesla-model-s.jpg',150,145,140,135,125,2107,'RWD',785,24,4,2500),(3,'BMW','i3','J',2017,'Micro','Brown',2,5,130,200,2,'Climat Control, ABS, EBD, AM/FM Radio, MP3 Player/USB, 6 airbags, 2WD, Heated seats',15,4,'Available','bmw-i3.jpg',80,77,73,68,60,1195,'AWD',170,23,3,900),(4,'Tesla','Model 3','F',2019,'Sedan','Black',5,5,402,518,1,'Autopilot, Control, ABS, EBD, AM/FM Radio, MP3 Player/USB, 12 airbags, 2WD, Heated seats',25,3,'Available','tesla-model-3.jpg',90,87,85,80,72,1611,'RWD',283,23,3,2200),(5,'Nissan','Leaf','F',2015,'Sedan','Gray',5,5,117,243,2.5,'Audio System, Climat Control, ABS, EBD, AM/FM Radio, MP3 Player/USB, 4 airbags, 2WD, Heated seats',15,3,'Not Available','nissan-leaf.jpg',75,73,70,64,55,1521,'FWD',147,20,2,700),(6,'Renault','Zoe','F',2020,'Micro','Blue',2,5,210,400,2.5,'Climat Control, ABS, EBD, AM/FM Radio, MP3 Player/USB, 6 airbags, 2WD, Heated seats',10,3,'Not Available','renault-zoe.jpg',68,63,58,53,45,1468,'FWD',136,20,2,300),(13,'Tesla','Panamera','A',2020,'Sedan','Black',5,7,5,12,4.5,'fff',0,0,'Available','bg2 (2).jpg',0,0,0,0,0,0,'AWD',250,0,0,0);
 /*!40000 ALTER TABLE `car` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,7 +81,7 @@ CREATE TABLE `contact` (
   `phone_nr` varchar(45) NOT NULL,
   `message` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,6 +90,7 @@ CREATE TABLE `contact` (
 
 LOCK TABLES `contact` WRITE;
 /*!40000 ALTER TABLE `contact` DISABLE KEYS */;
+INSERT INTO `contact` VALUES (1,'Radu Castraveț','radu.ask@gmail.com','744279994','Test'),(2,'Radu Castraveț','radu.ask@gmail.com','744279994','Test'),(3,'Radu Castraveț','radu.ask@gmail.com','744279994','edede'),(6,'Radu Castraveț','radu.ask@gmail.com','744279994','fdsafd'),(9,'Radu Castraveț','radu.ask@gmail.com','0744279994','Test');
 /*!40000 ALTER TABLE `contact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,12 +106,11 @@ CREATE TABLE `customer` (
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `phone_nr` int NOT NULL,
-  `address` varchar(45) NOT NULL,
-  `passport` varchar(45) NOT NULL,
+  `phone_nr` varchar(45) NOT NULL,
+  `address` varchar(45) DEFAULT NULL,
   `date_birth` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,17 +119,18 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES (85,'Radu','Castraveț','radu.ask@gmail.com','744279994','str Parcului Nr 9A, Bl E11','1999-12-31'),(86,'Vasile','Cotorobai','vasile@gmail.com','0744896332','Str. Test','1998-01-13');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `order`
+-- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `order`;
+DROP TABLE IF EXISTS `orders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `order` (
+CREATE TABLE `orders` (
   `id` int NOT NULL AUTO_INCREMENT,
   `order_date` datetime NOT NULL,
   `start_date` datetime NOT NULL,
@@ -138,6 +140,7 @@ CREATE TABLE `order` (
   `status` varchar(45) NOT NULL,
   `payment_status` varchar(45) NOT NULL,
   `payment_method` varchar(45) NOT NULL,
+  `casco` varchar(45) NOT NULL,
   `details` longtext,
   `car_id` int NOT NULL,
   `customer_id` int NOT NULL,
@@ -149,16 +152,17 @@ CREATE TABLE `order` (
   CONSTRAINT `fk_order_car1` FOREIGN KEY (`car_id`) REFERENCES `car` (`id`),
   CONSTRAINT `fk_order_customer1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`),
   CONSTRAINT `fk_order_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `order`
+-- Dumping data for table `orders`
 --
 
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (43,'2020-06-30 22:41:00','2020-06-30 22:41:00','2020-07-15 22:41:00',15,1020,'In Process','Pending','Cash','0','Test',3,85,3),(44,'2020-06-30 23:59:00','2020-06-30 23:59:00','2020-07-16 23:59:00',16,1008,'In Process','Pending','Card','1','Test',6,85,3),(45,'2020-07-01 00:53:00','2020-07-02 00:53:00','2020-07-04 00:53:00',2,180,'In Process','Pending','Cash','1','Test',5,86,3),(46,'2020-07-01 06:45:00','2020-07-01 06:45:00','2020-07-18 06:45:00',17,1343,'In Process','Pending','Cash','1','fdsafd',5,85,3);
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -209,7 +213,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'john','$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K','John','Doe','john@luv2code.com'),(2,'mary','$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K','Mary','Public','mary@luv2code.com'),(3,'susan','$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K','Susan','Adams','susan@luv2code.com'),(7,'radu','$2a$10$5MGtL2M7n6W1SKgALXvJ4eWNKCQFKH9b7LZR/OUBKwYBIgx8DurUa','Radu','Castravet','radu.ask@gmail.com'),(8,'lesea','$2a$10$fBwSAouD2xUD0WIAs7908OM3B1u8RmICzFFlLDF6VNXMAaVcG1HSW','Olesea','Goreanu','lesea@gmail.com');
+INSERT INTO `user` VALUES (1,'john','$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K','John','Doe','john@gmail.com'),(2,'mary','$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K','Mary','Poppins','mary@gmail.com'),(3,'susan','$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K','Susan','Adams','susan@gmail.com'),(7,'radu','$2a$10$5MGtL2M7n6W1SKgALXvJ4eWNKCQFKH9b7LZR/OUBKwYBIgx8DurUa','Radu','Castravet','radu.ask@gmail.com'),(8,'vasy','$2a$10$fBwSAouD2xUD0WIAs7908OM3B1u8RmICzFFlLDF6VNXMAaVcG1HSW','Vasile','Cotorobai','vasy@gmail.com');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,7 +240,7 @@ CREATE TABLE `users_roles` (
 
 LOCK TABLES `users_roles` WRITE;
 /*!40000 ALTER TABLE `users_roles` DISABLE KEYS */;
-INSERT INTO `users_roles` VALUES (1,1),(2,1),(3,1),(7,1),(8,1),(2,2),(3,2),(3,3);
+INSERT INTO `users_roles` VALUES (1,1),(2,1),(3,1),(7,1),(8,1),(2,2),(3,2),(7,2),(3,3),(7,3);
 /*!40000 ALTER TABLE `users_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -249,4 +253,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-03 18:38:44
+-- Dump completed on 2020-07-03 10:19:00
